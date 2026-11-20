@@ -103,6 +103,8 @@
 .arena:has(#overlay[data-mode="intro"]) #settingsBtn{background:linear-gradient(#eff4ff,#98a8c4 48%,#515b70);color:#151924;min-width:125px}
 
 /* Full fan rebuild: fresh pixel-stage look, new Node/Fighter HUD and original touch layout. */
+body:not(:is([data-game-state="play"],[data-game-state="paused"],[data-game-state="end"])) .touch{display:none!important}
+#installAppBtn{display:none!important}
 #installAppBtn{display:none!important}
 #editHudBtn,#hudEditor{display:none!important}
 .scene,.menu-art,#splash{display:none!important;visibility:hidden!important}
