@@ -141,6 +141,15 @@ header{flex-wrap:wrap}#stage{max-width:100%;min-width:0;min-height:42px;backgrou
 .splash-progress i{display:block;width:0;height:100%;border-radius:6px;background:linear-gradient(180deg,#fff1ad 0,#ffbd56 45%,#da692e 100%);box-shadow:0 0 12px #ffae48;animation:splash-load 13s linear forwards}
 @keyframes splash-load{to{width:100%}}
 @media(prefers-reduced-motion:reduce){.loading-dots i{animation:none;opacity:1}.splash-progress i{animation-duration:13s}#splash{transition:none}}
+
+/* Standard Xbox face-button cross: Y top, X left, B right, A bottom. */
+.touch .face{display:grid;grid-template-columns:repeat(3,40px);grid-template-rows:repeat(3,40px);gap:4px;width:128px;height:128px;align-content:center;justify-content:center}
+.touch .face button{position:static;inset:auto;align-self:center;justify-self:center;margin:0}
+.face [data-key=kick]{grid-column:2;grid-row:1}
+.face [data-key=hit]{grid-column:1;grid-row:2}
+.face [data-key=guard]{grid-column:3;grid-row:2}
+.face [data-key=jump]{grid-column:2;grid-row:3}
+@media(max-height:460px){.touch .face{width:124px;height:80px;grid-template-columns:repeat(3,36px);grid-template-rows:repeat(2,36px);gap:4px}.face [data-key=kick]{grid-column:2;grid-row:1}.face [data-key=hit]{grid-column:1;grid-row:2}.face [data-key=guard]{grid-column:3;grid-row:2}.face [data-key=jump]{grid-column:2;grid-row:3}}
 </style>
 <meta property="og:type" content="website"><meta property="og:title" content="Animation Versus — Arenas de duelo"><meta property="og:description" content="Animation Versus: duelo arcade de lutadores palito contra a CPU em dez arenas selecionáveis."><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Animation Versus — Arenas de duelo"><meta name="twitter:description" content="Animation Versus: duelo arcade de lutadores palito contra a CPU em dez arenas selecionáveis."><meta property="og:image" content="https://app.rogueon.ai/api/cartao/9314d81709e14a24"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:image" content="https://app.rogueon.ai/api/cartao/9314d81709e14a24"></head>
 <body>
