@@ -284,7 +284,8 @@ const platforms=()=>stage===2?[[240,720,322]]:stage===3?[[168,336,330],[624,792,
 const surfaces=()=>platforms().concat([a,b].flatMap(p=>p?.ledge?.until>now?[[p.ledge.x-48,p.ledge.x+48,p.ledge.y]]:[]));
 const support=p=>surfaces().find(([l,r,y])=>p.x>=l&&p.x<=r&&Math.abs(p.y-y)<.01);
 const grounded=p=>p.y>=floor||!!support(p);
-let floor=424;const keys=new Set(),touches=new Map(),reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;function setStageGround(){floor=stage>=11?([470,470,460,490][stage-11]??470):424;}
+let floor=424;const keys=new Set(),touches=new Map(),reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;// Piso calibrado para cada fundo enviado, nas coordenadas 960×540.
+function setStageGround(){floor=stage>=11?([400,410,408,464][stage-11]??400):424;}
 const cpuLevels=[{name:'Fácil',damage:.25,speed:.52,range:.78},{name:'Média',damage:.38,speed:.68,range:.88},{name:'Normal',damage:.5,speed:.8,range:1},{name:'Difícil',damage:.68,speed:.94,range:1.08},{name:'Impossível',damage:.9,speed:1.08,range:1.18},{name:'Ultimate',damage:1.08,speed:1.2,range:1.3}];let cpuLevel=2;
 let a,b,time,state='intro',back='intro',last,now=0,sparks=[],bursts=[],audio;
 const fighter=(x,color,edge,f)=>({x,y:floor,v:0,hp:100,color,edge,f,cd:0,attack:0,used:false,guard:false,flash:0,walk:0});
