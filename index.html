@@ -416,7 +416,7 @@ const fighter=(x,color,edge,f)=>({x,y:floor,v:0,hp:100,color,edge,f,cd:0,attack:
 const roster=[['The Second Coming (Orange)','#ff6600','#542000','#ffad66'],['Red','#cc0000','#4a0000','#ff6666'],['Yellow','#ffcc00','#665200','#fff078'],['Green','#66cc00','#285200','#adff66'],['Blue','#33ccff','#004e68','#a5efff'],['Purple','#9148ce','#3f1b60','#cc9eff'],['The Chosen One','#191b24','#05060a','#a9b3ca'],['The Dark Lord','#ff0000','#4a0000','#ff7777'],['Victim','#868a97','#343743','#c9ccd5'],['King Orange','#ea641b','#60270d','#ffb270'],['Conductor','#e25bac','#5e204c','#ffa9de'],['Node','#eeeefa','#3d415b','#f4f4ff']];
 // Adaptações para esta arena; não são comandos oficiais.
 // A: nome, impulso, avanço; B: nome, dano bloqueado que passa; X/Y: nome, alcance, dano, recarga, impulso no alvo, tolerância vertical.
-const kits=[[['Salto',675,36],['Guarda',2],['Esfregão carregável',124,12,.44,24,65,'mop'],['Flor desenhada / mergulho de motosserra',175,19,.88,47,76,'draw']],[['Salto ofensivo',660,52],['Guarda',3],['Chute do lobo',123,16,.39,37,67,'wolf'],['Bola de fogo / galinha carregada',140,11,.78,22,34,'fire']],[['Salto / teletransporte aéreo',635,18],['Janela pop-up',0],['Disparo do laptop',285,10,.46,21,32,'laptop'],['Pop-up ofensivo',246,16,.91,25,88,'popup']],[['Salto / gancho aéreo',670,24],['Guarda com vara',2],['Corte de vara',156,13,.39,25,72,'rod'],['Puxão de pesca',240,15,.84,-54,95,'hook']],[['Salto / teletransporte curto',665,20],['Guarda',2],['Combo de três golpes',116,5,.49,10,74,'combo'],['Poções alternadas',241,12,.68,24,38,'potion']],[['Salto duplo / planar',685,26],['Asas fechadas',3],['Rasante',133,12,.37,28,95],['Agarrão aéreo',132,20,.81,46,105,'grab']],[['Voo de fogo',755,57],['Manto de fogo',2],['Rajada de fogo',215,19,.54,30,48,'flame'],['Visão laser',355,27,1.24,43,38,'laser']],[['Salto de investida',720,105],['Guarda cruzada das Vira-Blades',1],['Combo de cortes Vira-Blade',143,8,.52,24,65,'combo'],['Projétil sombrio (infecção)',350,12,1.05,26,30,'viral']],[['Salto de edição',645,46],['Guarda de contra-ataque',0],['Traço de pincel',148,11,.40,22,64],['Armadilha de contenção',200,15,1.35,12,48,'trap']],[['Pilar de terra e grama',695,12],['Muralha de obsidiana',0],['Bigorna cadente',163,23,.89,53,38,'anvil'],['Feixe do bloco dourado',375,31,1.65,71,43,'gold']],[['Salto de exploração',665,33],['Proteção da bolsa',2],['Golpe de ferramenta',116,10,.30,21,68],['Ferramenta arremessada',214,16,.86,42,38,'tool']],[['Salto de pixel',725,64],['Campo de nós',1],['Pulso de nó',159,11,.48,24,72],['Pulso da rede',265,16,1.03,49,42,'network']]];
+const kits=[[['Salto',675,36],['Guarda',2],['Esfregão carregável',124,12,.44,24,65,'mop'],['Flor desenhada / mergulho de motosserra',175,19,.88,47,76,'draw']],[['Salto ofensivo',660,52],['Guarda',3],['Chute do lobo',123,16,.39,37,67,'wolf'],['Bola de fogo / galinha carregada',140,11,.78,22,34,'fire']],[['Salto / teletransporte aéreo',635,18],['Janela pop-up',0],['Disparo do laptop',285,10,.46,21,32,'laptop'],['Pop-up ofensivo',246,16,.91,25,88,'popup']],[['Salto / gancho aéreo',670,24],['Guarda com vara',2],['Corte de vara',156,13,.39,25,72,'rod'],['Puxão de pesca',240,15,.84,-54,95,'hook']],[['Salto / teletransporte curto',665,20],['Guarda',2],['Combo de três golpes',116,5,.49,10,74,'combo'],['Poções alternadas',241,12,.68,24,38,'potion']],[['Salto duplo / planar',685,26],['Asas fechadas',3],['Rasante',133,12,.37,28,95],['Agarrão aéreo',132,20,.81,46,105,'grab']],[['Voo de fogo',755,57],['Manto de fogo',2],['Rajada de fogo',215,19,.54,30,48,'flame'],['Visão laser',355,27,1.24,43,38,'laser']],[['Salto de investida',720,105],['Guarda cruzada das Vira-Blades',1],['Combo agressivo de Vira-Blade',150,8,.36,27,68,'combo'],['Projétil sombrio (infecção)',350,12,1.05,26,30,'viral']],[['Salto de edição',645,46],['Guarda de contra-ataque',0],['Traço de pincel',148,11,.40,22,64],['Armadilha de contenção',200,15,1.35,12,48,'trap']],[['Pilar de terra e grama',695,12],['Muralha de obsidiana',0],['Bigorna cadente',163,23,.89,53,38,'anvil'],['Feixe do bloco dourado',375,31,1.65,71,43,'gold']],[['Salto de exploração',665,33],['Proteção da bolsa',2],['Golpe de ferramenta',116,10,.30,21,68],['Ferramenta arremessada',214,16,.86,42,38,'tool']],[['Salto de pixel',725,64],['Campo de nós',1],['Pulso de nó',159,11,.48,24,72],['Pulso da rede',265,16,1.03,49,42,'network']]];
 let selected=0,activeSelection=0,selectBack='intro',bolts=[];
 const dark=()=>activeSelection===7;
 let bot=null,botCooldown=0;
@@ -485,7 +485,7 @@ stick.addEventListener('pointerdown',e=>{if(state!=='play'||stickId!==null||e.bu
 stick.addEventListener('pointermove',e=>{if(e.pointerId===stickId)steer(e)});
 for(const type of ['pointerup','pointercancel','lostpointercapture'])stick.addEventListener(type,e=>{if(e.pointerId!==stickId)return;stickId=null;stickAxis=0;nub.style.transform=''});
 const mobilityNotes=['A no ar: desenha um apoio temporário sob os pés.','A com direção: salto com arrancada.','A no ar: teletransporte do laptop (adaptação).','A no ar: lança o gancho e se puxa até a âncora.','A no ar: teletransporte curto (adaptação).','A no ar: abre as asas com um impulso; segure A e direcione para planar.','Solte e segure A no ar para voar com fogo; direcione o voo. Gasta energia.','A no ar: arrancada curta na direção escolhida.','A no ar: esquiva curta para trás ou na direção escolhida.','A no chão: sobe com um pilar de terra e grama.','A no ar: impulso com ferramenta (provisório).','A no ar: salta para um nó da rede (provisório).'];
-const runSpeeds=[280,310,268,279,302,265,287,346,254,216,263,276];
+const runSpeeds=[280,310,268,279,302,265,287,365,254,216,263,276];
 function move(p,dir,jump,guard,hit,dt,kick=false){
 const kit=kits[p.id];
 p.slow=Math.max(0,(p.slow||0)-dt);p.stun=Math.max(0,(p.stun||0)-dt);
@@ -561,7 +561,7 @@ move(a,localInput.axis,localInput.jump,localInput.guard,localInput.hit,dt,localI
 const ri=onlineState.remoteInput||{};move(b,Number.isFinite(ri.axis)?ri.axis:Number(!!ri.right)-Number(!!ri.left),!!ri.jump,!!ri.guard,!!ri.hit,dt,!!ri.kick)
 }else{
 move(a,Math.max(-1,Math.min(1,stickAxis+Number(down('right'))-Number(down('left')))),down('jump'),down('guard'),down('hit'),dt,down('kick'));
-const [, , quick,special]=kits[b.id],dy=Math.abs(a.y-b.y),cpuRange=cpuLevels[cpuLevel].range;const useSpecial=(b.id===1&&b.charge>0)||(d<special[1]*cpuRange-10&&dy<special[5]&&(b.id!==5||b.y<floor)&&Math.sin(now*4.1)>.55);
+const [, , quick,special]=kits[b.id],dy=Math.abs(a.y-b.y),cpuRange=cpuLevels[cpuLevel].range;const useSpecial=b.id===7?(d<155&&dy<68&&b.cd<=0):(b.id===1&&b.charge>0)||(d<special[1]*cpuRange-10&&dy<special[5]&&(b.id!==5||b.y<floor)&&Math.sin(now*4.1)>.55);
 move(b,d>89*cpuRange&&!useSpecial?Math.sign(dx):0,d<180*cpuRange&&((a.y<b.y-70&&grounded(b)&&!b.jumpHeld)||Math.sin(now*2.1)>.985||((b.id>=2&&b.id<=8||b.id===10||b.id===11)&&!grounded(b)&&b.v>-90&&!b.airUsed&&!b.jumpHeld)||(b.flying&&b.y>156&&a.y<b.y-25)),d<120&&a.attack>.09&&Math.sin(now*4.4)>.25,(b.id===0&&b.charge>0&&!useSpecial)||(d<quick[1]*cpuRange-8&&dy<quick[5]),dt,useSpecial);
 }
 if(Math.abs(a.x-b.x)<43&&Math.abs(a.y-b.y)<70){const mid=(a.x+b.x)/2;a.x=mid-a.f*22;b.x=mid+a.f*22}
@@ -634,30 +634,25 @@ else if(phase<.72){limbs[2]=[[7,y],[19,y-8],[35+reach*.25,y-31]];limbs[3]=[[7,y]
 else{limbs[2]=[[7,y],[-5,y-13],[20,y-31]];limbs[3]=[[7,y],[18,y-9],[38+reach*.25,y-21]]}
 }
 for(const l of limbs)line(l,p.edge,15);for(const l of limbs)line(l,col,8);
-if(look===7&&tag==='combo'&&p.attack>0&&p.attack<=.17){
-const hit=p.hits||0,phase=(.17-p.attack)/.13,alpha=Math.max(.18,1-phase*.72);
-g.save();g.globalAlpha=alpha;g.shadowColor='#ff315f';g.shadowBlur=10;
-/* Short bright Vira-Blade trails follow the alternating diagonal cuts. */
-if(hit===1){line([[4,y+8],[22,y-3],[42,y-23],[55,y-46]],'#ff3d78',11);line([[8,y+4],[26,y-7],[45,y-27],[55,y-46]],'#ffe8ef',3)}
-else if(hit===2){line([[42,y+7],[22,y-4],[2,y-24],[-8,y-45]],'#ff3d78',11);line([[38,y+3],[19,y-8],[0,y-28],[-8,y-45]],'#ffe8ef',3)}
-else{line([[4,y-14],[24,y-18],[47,y-31],[60,y-49]],'#ff3d78',12);line([[8,y-18],[27,y-22],[49,y-35],[60,y-49]],'#ffe8ef',3)}
-g.restore()
-}
 if(activeLook(p)===7){
-/* The Dark Lord's Vira-Blades: bright energy blades projecting from both wristbands. */
-const viraBlade=(x0,y0,dx,dy,pulse=0)=>{const len=Math.hypot(dx,dy)||1,nx=-dy/len,ny=dx/len,w=7+pulse*1.5,tip=[x0+dx,y0+dy],mid=[x0+dx*.68,y0+dy*.68],root=[x0+dx*.18,y0+dy*.18];
-/* wristband */
-g.save();g.shadowColor='#ff2b68';g.shadowBlur=8;line([[x0-nx*6,y0-ny*6],[x0+nx*6,y0+ny*6]],'#65132c',7);line([[x0-nx*4,y0-ny*4],[x0+nx*4,y0+ny*4]],'#ff6b9b',3);
-/* faceted, tapered dark-energy blade with a bright inner edge */
-poly([[x0+nx*3,y0+ny*3],[root[0]+nx*w,root[1]+ny*w],[mid[0]+nx*w*.63,mid[1]+ny*w*.63],[tip[0],tip[1]],[mid[0]-nx*w*.63,mid[1]-ny*w*.63],[root[0]-nx*w,root[1]-ny*w]],'#4c1028');
-poly([[x0+nx*1.5,y0+ny*1.5],[root[0]+nx*w*.58,root[1]+ny*w*.58],[mid[0]+nx*w*.4,mid[1]+ny*w*.4],[tip[0],tip[1]],[mid[0]-nx*w*.24,mid[1]-ny*w*.24],[root[0]-nx*w*.42,root[1]-ny*w*.42]],'#ff3d78');
-line([[x0+nx*1.2,y0+ny*1.2],[root[0]+dx*.42+nx*2,root[1]+dy*.42+ny*2],tip],'#ffe6f0',2.4);
-/* energized center pulses */
-g.globalAlpha=.72;line([[x0+dx*.28,y0+dy*.28],[x0+dx*.59,y0+dy*.59]],'#ffa2c2',1.5);g.restore()};
-const pulse=.5+.5*Math.sin(now*16);
-if(p.guard){viraBlade(24,y+9,28,-37,pulse);viraBlade(30,y-10,25,36,pulse)}
-else if(!p.kick&&reach>0){viraBlade(34+reach*.5,y+5-reach*.12,43+reach*.28,-27,pulse);viraBlade(2,y+12,-31,27,pulse)}
-else{viraBlade(30,y+9,34,10,pulse);viraBlade(2,y+12,-28,22,pulse)}
+/* Vira-Blades grow directly out of the wristbands; no hand-held hilts. */
+const viraBlade=(arm,pulse=0,trail=false)=>{
+const elbow=arm[1],wrist=arm[2],vx=wrist[0]-elbow[0],vy=wrist[1]-elbow[1],n=Math.hypot(vx,vy)||1,ux=vx/n,uy=vy/n,nx=-uy,ny=ux;
+const bx=wrist[0]+ux*2,by=wrist[1]+uy*2,len=45+Math.min(12,reach*.12),tip=[bx+ux*len,by+uy*len],base=[bx+ux*8,by+uy*8],mid=[bx+ux*len*.62,by+uy*len*.62],w=7+pulse*1.3;
+g.save();g.shadowColor='#ff244f';g.shadowBlur=10;
+/* Slim ViraBand cuff sits around the wrist, with energy starting at its edge. */
+g.beginPath();g.ellipse(wrist[0],wrist[1],7,4,Math.atan2(uy,ux),0,Math.PI*2);g.fillStyle='#39101d';g.fill();g.strokeStyle='#ff4e73';g.lineWidth=2;g.stroke();
+/* Tapered red virus-energy blade, continuous from the cuff and along the forearm. */
+poly([[bx+nx*2,by+ny*2],[base[0]+nx*w,base[1]+ny*w],[mid[0]+nx*w*.66,mid[1]+ny*w*.66],tip,[mid[0]-nx*w*.66,mid[1]-ny*w*.66],[base[0]-nx*w,base[1]-ny*w]],'#521027');
+poly([[bx+nx,by+ny],[base[0]+nx*w*.54,base[1]+ny*w*.54],[mid[0]+nx*w*.32,mid[1]+ny*w*.32],tip,[mid[0]-nx*w*.32,mid[1]-ny*w*.32],[base[0]-nx*w*.54,base[1]-ny*w*.54]],'#ff315f');
+line([[bx+nx*.4,by+ny*.4],[mid[0]+nx,mid[1]+ny],tip],'#ffe8ed',2.5);
+if(trail&&!reduced){g.globalAlpha=.38;line([[bx-ux*7-nx*3,by-uy*7-ny*3],[bx+ux*len*.55-nx*2,by+uy*len*.55-ny*2],[tip[0]-ux*12,tip[1]-uy*12]],'#ff416e',5);g.globalAlpha=.7;line([[bx-ux*4,by-uy*4],[tip[0]-ux*10,tip[1]-uy*10]],'#ffc3d2',2)}
+g.restore()
+};
+const pulse=.5+.5*Math.sin(now*18),slash=tag==='combo'&&p.attack>0&&p.attack<.18;
+/* The arms define the blade origins/directions, so each blade follows the wrist in every pose. */
+viraBlade(limbs[2],pulse,slash&&((p.hits||0)===2));
+viraBlade(limbs[3],pulse,slash&&((p.hits||0)!==2));
 }
 if(p.virus){g.fillStyle='#ff70b8';for(let j=0;j<6;j++)g.fillRect((j*17)%49-24,-22-(j*13)%77,5,5)}
 if(look===0&&p.attack){if(tag==='mop'){line([[28,y+8],[48+reach,y-20]],'#a05c36',7);line([[42+reach,y-26],[54+reach,y-14]],'#fcf2c9',10)}else if(tag==='saw'){line([[24,y+13],[54,y+57]],'#2b2430',17);line([[24,y+13],[54,y+57]],'#dfe2ee',9);for(let j=0;j<5;j++)g.fillRect(29+j*6,y+14+j*8,7,5)}else{line([[29,y+7],[52,y-19]],'#ffdc59',8);poly([[52,y-19],[57,y-26],[55,y-15]],'#322336')}}
