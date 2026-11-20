@@ -352,6 +352,11 @@ input,select,textarea{font-size:16px;touch-action:manipulation}
  body[data-game-state="play"] .touch>.face>[data-hud-id="s"],body[data-game-state="play"] .touch>.face>[data-hud-id="w"]{pointer-events:none!important}
  body[data-game-state="play"] .touch>.face>[data-hud-id]:not(.hud-inert){pointer-events:auto!important}
 }
+
+/* The joystick is anchored directly to the viewport, not to the gameplay container. */
+.hud-edit-stick{width:calc(var(--hud-live-stick-size,76px) * var(--hud-stick-scale,1))!important;height:calc(var(--hud-live-stick-size,76px) * var(--hud-stick-scale,1))!important}
+body[data-game-state="play"] .touch>.stick{position:fixed!important;z-index:2147483001!important;left:var(--hud-stick-left,4%)!important;bottom:var(--hud-stick-bottom,5%)!important;right:auto!important;top:auto!important;width:calc(var(--hud-live-stick-size,76px) * var(--hud-stick-scale,1))!important;height:calc(var(--hud-live-stick-size,76px) * var(--hud-stick-scale,1))!important;margin:0!important;padding:0!important;transform:none!important;flex:none!important}
+@media (orientation:landscape) and (max-height:430px) and (pointer:coarse){body[data-game-state="play"] .touch>.stick,.hud-edit-stick{--hud-live-stick-size:64px}}
 </style>
 <meta property="og:type" content="website"><meta property="og:title" content="Animation Versus — Arenas de duelo"><meta property="og:description" content="Animation Versus: duelo arcade de lutadores palito contra a CPU em dez arenas selecionáveis."><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Animation Versus — Arenas de duelo"><meta name="twitter:description" content="Animation Versus: duelo arcade de lutadores palito contra a CPU em dez arenas selecionáveis."><meta property="og:image" content="https://app.rogueon.ai/api/cartao/9314d81709e14a24"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:image" content="https://app.rogueon.ai/api/cartao/9314d81709e14a24"></head>
 <body>
