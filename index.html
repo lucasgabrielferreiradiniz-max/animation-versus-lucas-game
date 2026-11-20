@@ -626,7 +626,22 @@ if(reach>24)poly([[18,y+25],[48,y+8],[48+reach,y-12],[33+reach,y+8],[43,y+26]],p
 const limbs=[[[0,-47],[-15-step*.5,-25],[-23-step,air?-13:0]],[[0,-47],[17+step*.5,air?-40:-23],[23+step,air?-20:0]],[[7,y],[-17,y+22],[2,y+11]],[[7,y],[p.guard?23:21+reach*.45,y+(p.guard?10:16-reach*.15)],[p.guard?26:31+reach,y+(p.guard?-13:7-reach*.1)]],[[0,-47],[7,y],[9,y-12]]];
 if(p.kick&&reach>0&&!(p.id===7)){limbs[1]=[[0,-47],[20+reach*.55,-32-reach*.2],[28+reach,-21-reach*.48]];limbs[3]=[[7,y],[19,y+16],[29,y+7]]}
 for(const l of limbs)line(l,p.edge,15);for(const l of limbs)line(l,col,8);
-if(activeLook(p)===7){const blade=(x,y,dx,dy)=>{poly([[x-6,y+4],[x+dx*.76-6,y+dy*.76+5],[x+dx,y+dy],[x+dx*.57+5,y+dy*.57-6],[x+4,y-6]],'#350411');line([[x,y],[x+dx*.78,y+dy*.78]],'#ff557d',4)};if(p.guard){blade(21,y+2,28,-27);blade(26,y-11,25,33)}else if(!p.kick&&reach>0){blade(31+reach,y+7-reach*.1,38,-16);blade(2,y+11,-24,24)}else{blade(31,y+7,26,17);blade(2,y+11,-25,22)}}
+if(activeLook(p)===7){
+/* The Dark Lord's Vira-Blades: bright energy blades projecting from both wristbands. */
+const viraBlade=(x0,y0,dx,dy,pulse=0)=>{const len=Math.hypot(dx,dy)||1,nx=-dy/len,ny=dx/len,w=7+pulse*1.5,tip=[x0+dx,y0+dy],mid=[x0+dx*.68,y0+dy*.68],root=[x0+dx*.18,y0+dy*.18];
+/* wristband */
+g.save();g.shadowColor='#ff2b68';g.shadowBlur=8;line([[x0-nx*6,y0-ny*6],[x0+nx*6,y0+ny*6]],'#65132c',7);line([[x0-nx*4,y0-ny*4],[x0+nx*4,y0+ny*4]],'#ff6b9b',3);
+/* faceted, tapered dark-energy blade with a bright inner edge */
+poly([[x0+nx*3,y0+ny*3],[root[0]+nx*w,root[1]+ny*w],[mid[0]+nx*w*.63,mid[1]+ny*w*.63],[tip[0],tip[1]],[mid[0]-nx*w*.63,mid[1]-ny*w*.63],[root[0]-nx*w,root[1]-ny*w]],'#4c1028');
+poly([[x0+nx*1.5,y0+ny*1.5],[root[0]+nx*w*.58,root[1]+ny*w*.58],[mid[0]+nx*w*.4,mid[1]+ny*w*.4],[tip[0],tip[1]],[mid[0]-nx*w*.24,mid[1]-ny*w*.24],[root[0]-nx*w*.42,root[1]-ny*w*.42]],'#ff3d78');
+line([[x0+nx*1.2,y0+ny*1.2],[root[0]+dx*.42+nx*2,root[1]+dy*.42+ny*2],tip],'#ffe6f0',2.4);
+/* energized center pulses */
+g.globalAlpha=.72;line([[x0+dx*.28,y0+dy*.28],[x0+dx*.59,y0+dy*.59]],'#ffa2c2',1.5);g.restore()};
+const pulse=.5+.5*Math.sin(now*16);
+if(p.guard){viraBlade(24,y+9,28,-37,pulse);viraBlade(30,y-10,25,36,pulse)}
+else if(!p.kick&&reach>0){viraBlade(34+reach*.5,y+5-reach*.12,43+reach*.28,-27,pulse);viraBlade(2,y+12,-31,27,pulse)}
+else{viraBlade(30,y+9,34,10,pulse);viraBlade(2,y+12,-28,22,pulse)}
+}
 if(p.virus){g.fillStyle='#ff70b8';for(let j=0;j<6;j++)g.fillRect((j*17)%49-24,-22-(j*13)%77,5,5)}
 if(look===0&&p.attack){if(tag==='mop'){line([[28,y+8],[48+reach,y-20]],'#a05c36',7);line([[42+reach,y-26],[54+reach,y-14]],'#fcf2c9',10)}else if(tag==='saw'){line([[24,y+13],[54,y+57]],'#2b2430',17);line([[24,y+13],[54,y+57]],'#dfe2ee',9);for(let j=0;j<5;j++)g.fillRect(29+j*6,y+14+j*8,7,5)}else{line([[29,y+7],[52,y-19]],'#ffdc59',8);poly([[52,y-19],[57,y-26],[55,y-15]],'#322336')}}
 if(look===1&&tag==='wolf'&&p.attack>.06)poly([[34,y+18],[52,y-15],[60,y-1],[73,y-16],[85,y+3],[119,y+14],[96,y+35],[64,y+39]],'#ffb5a7ae');
