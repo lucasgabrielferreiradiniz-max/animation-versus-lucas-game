@@ -284,35 +284,59 @@ input,select,textarea{font-size:16px;touch-action:manipulation}
 @media (orientation:landscape) and (max-height:430px) and (pointer:coarse){.touch .face .hud-inert{width:calc(28px * var(--hud-face-scale,1));height:calc(28px * var(--hud-face-scale,1));min-width:calc(28px * var(--hud-face-scale,1));min-height:calc(28px * var(--hud-face-scale,1));font-size:calc(11px * var(--hud-face-scale,1))}}
 
 
-/* Match the user's six-button reference: two upper/right, two staggered mid, two lower/left. */
-.touch .face{width:180px!important;height:170px!important;position:relative!important;display:block!important;flex:none!important}
-.touch .face button:not(.hud-inert){position:absolute!important;width:34px!important;height:34px!important;min-width:34px!important;min-height:34px!important;margin:0!important;padding:0!important;border-radius:50%!important;transform:translate(-50%,-50%)!important}
-.touch .face .hud-inert{position:absolute!important;width:34px!important;height:34px!important;min-width:34px!important;min-height:34px!important;margin:0!important;padding:0!important;border-radius:50%!important;transform:translate(-50%,-50%)!important}
-.touch .face .hud-inert-s{left:16.6%!important;top:41.4%!important;right:auto!important;bottom:auto!important}
-.touch .face .hud-inert-w{left:46.5%!important;top:25%!important;right:auto!important;bottom:auto!important}
-.touch .face [data-key="kick"]{left:78.9%!important;top:17.2%!important;right:auto!important;bottom:auto!important}
-.touch .face [data-key="hit"]{left:53.7%!important;top:66.5%!important;right:auto!important;bottom:auto!important}
-.touch .face [data-key="guard"]{left:86.7%!important;top:60%!important;right:auto!important;bottom:auto!important}
-.touch .face [data-key="jump"]{left:24.4%!important;top:85.6%!important;right:auto!important;bottom:auto!important}
-.hud-edit-face{width:180px!important;height:170px!important;aspect-ratio:auto!important}
-.hud-edit-face>*{width:23%!important;height:auto!important;aspect-ratio:1!important;transform:translate(-50%,-50%)!important}
-.hud-edit-face .hud-inert-s{left:16.6%!important;top:41.4%!important;right:auto!important;bottom:auto!important}
-.hud-edit-face .hud-inert-w{left:46.5%!important;top:25%!important;right:auto!important;bottom:auto!important}
-.hud-edit-face .psp-triangle{left:78.9%!important;top:17.2%!important;right:auto!important;bottom:auto!important}
-.hud-edit-face .psp-square{left:53.7%!important;top:66.5%!important;right:auto!important;bottom:auto!important}
-.hud-edit-face .psp-circle{left:86.7%!important;top:60%!important;right:auto!important;bottom:auto!important}
-.hud-edit-face .psp-cross{left:24.4%!important;top:85.6%!important;right:auto!important;bottom:auto!important}
+
+/* Six-button grid copied from the reference photo; letters do not affect placement. */
+.touch .face{
+ width:calc(138px * var(--hud-face-scale,1))!important;
+ height:calc(138px * var(--hud-face-scale,1))!important;
+ position:relative!important;display:grid!important;flex:none!important;margin-left:auto!important;
+ grid-template-columns:repeat(3,calc(38px * var(--hud-face-scale,1)))!important;
+ grid-template-rows:repeat(3,calc(38px * var(--hud-face-scale,1)))!important;
+ gap:calc(12px * var(--hud-face-scale,1))!important;
+ align-content:center!important;justify-content:center!important;justify-items:center!important;align-items:center!important;
+}
+.touch .face button:not(.hud-inert),.touch .face .hud-inert{
+ position:static!important;inset:auto!important;transform:none!important;float:none!important;
+ width:calc(38px * var(--hud-face-scale,1))!important;height:calc(38px * var(--hud-face-scale,1))!important;
+ min-width:calc(38px * var(--hud-face-scale,1))!important;min-height:calc(38px * var(--hud-face-scale,1))!important;
+ margin:0!important;padding:0!important;justify-self:center!important;align-self:center!important;
+}
+/* Row 1: middle + right. Row 2: left + middle + right. Row 3: left. */
+.touch .face .hud-inert-w{grid-column:2!important;grid-row:1!important}
+.touch .face [data-key="kick"]{grid-column:3!important;grid-row:1!important}
+.touch .face .hud-inert-s{grid-column:1!important;grid-row:2!important}
+.touch .face [data-key="hit"]{grid-column:2!important;grid-row:2!important}
+.touch .face [data-key="guard"]{grid-column:3!important;grid-row:2!important}
+.touch .face [data-key="jump"]{grid-column:1!important;grid-row:3!important}
+.hud-edit-face{
+ width:calc(138px * var(--hud-face-scale,1))!important;height:calc(138px * var(--hud-face-scale,1))!important;
+ aspect-ratio:auto!important;display:grid!important;
+ grid-template-columns:repeat(3,calc(38px * var(--hud-face-scale,1)))!important;
+ grid-template-rows:repeat(3,calc(38px * var(--hud-face-scale,1)))!important;
+ gap:calc(12px * var(--hud-face-scale,1))!important;
+ align-content:center!important;justify-content:center!important;justify-items:center!important;align-items:center!important;
+}
+.hud-edit-face>*{
+ position:static!important;inset:auto!important;transform:none!important;float:none!important;
+ width:calc(38px * var(--hud-face-scale,1))!important;height:calc(38px * var(--hud-face-scale,1))!important;
+ aspect-ratio:auto!important;margin:0!important;padding:0!important;
+ justify-self:center!important;align-self:center!important;
+}
+.hud-edit-face .hud-inert-w{grid-column:2!important;grid-row:1!important}
+.hud-edit-face .psp-triangle{grid-column:3!important;grid-row:1!important}
+.hud-edit-face .hud-inert-s{grid-column:1!important;grid-row:2!important}
+.hud-edit-face .psp-square{grid-column:2!important;grid-row:2!important}
+.hud-edit-face .psp-circle{grid-column:3!important;grid-row:2!important}
+.hud-edit-face .psp-cross{grid-column:1!important;grid-row:3!important}
 @media (orientation:landscape) and (max-height:600px) and (pointer:coarse){
- .touch{height:176px!important}
- .touch .face{width:170px!important;height:160px!important}
- .touch .face button:not(.hud-inert),.touch .face .hud-inert{width:30px!important;height:30px!important;min-width:30px!important;min-height:30px!important;font-size:12px!important}
- .hud-edit-face{width:170px!important;height:160px!important}
+ .touch{height:calc(138px * var(--hud-face-scale,1))!important}
+ .touch .face,.hud-edit-face{width:calc(120px * var(--hud-face-scale,1))!important;height:calc(120px * var(--hud-face-scale,1))!important;grid-template-columns:repeat(3,calc(32px * var(--hud-face-scale,1)))!important;grid-template-rows:repeat(3,calc(32px * var(--hud-face-scale,1)))!important;gap:calc(12px * var(--hud-face-scale,1))!important}
+ .touch .face button:not(.hud-inert),.touch .face .hud-inert,.hud-edit-face>*{width:calc(32px * var(--hud-face-scale,1))!important;height:calc(32px * var(--hud-face-scale,1))!important;min-width:calc(32px * var(--hud-face-scale,1))!important;min-height:calc(32px * var(--hud-face-scale,1))!important;font-size:calc(12px * var(--hud-face-scale,1))!important}
 }
 @media (orientation:landscape) and (max-height:430px) and (pointer:coarse){
- .touch{height:154px!important}
- .touch .face{width:154px!important;height:144px!important}
- .touch .face button:not(.hud-inert),.touch .face .hud-inert{width:27px!important;height:27px!important;min-width:27px!important;min-height:27px!important;font-size:11px!important}
- .hud-edit-face{width:154px!important;height:144px!important}
+ .touch{height:calc(110px * var(--hud-face-scale,1))!important}
+ .touch .face,.hud-edit-face{width:calc(100px * var(--hud-face-scale,1))!important;height:calc(100px * var(--hud-face-scale,1))!important;grid-template-columns:repeat(3,calc(27px * var(--hud-face-scale,1)))!important;grid-template-rows:repeat(3,calc(27px * var(--hud-face-scale,1)))!important;gap:calc(9px * var(--hud-face-scale,1))!important}
+ .touch .face button:not(.hud-inert),.touch .face .hud-inert,.hud-edit-face>*{width:calc(27px * var(--hud-face-scale,1))!important;height:calc(27px * var(--hud-face-scale,1))!important;min-width:calc(27px * var(--hud-face-scale,1))!important;min-height:calc(27px * var(--hud-face-scale,1))!important;font-size:calc(10px * var(--hud-face-scale,1))!important}
 }
 </style>
 <meta property="og:type" content="website"><meta property="og:title" content="Animation Versus — Arenas de duelo"><meta property="og:description" content="Animation Versus: duelo arcade de lutadores palito contra a CPU em dez arenas selecionáveis."><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Animation Versus — Arenas de duelo"><meta name="twitter:description" content="Animation Versus: duelo arcade de lutadores palito contra a CPU em dez arenas selecionáveis."><meta property="og:image" content="https://app.rogueon.ai/api/cartao/9314d81709e14a24"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:image" content="https://app.rogueon.ai/api/cartao/9314d81709e14a24"></head>
