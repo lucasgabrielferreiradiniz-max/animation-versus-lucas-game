@@ -333,6 +333,15 @@ input,select,textarea{font-size:16px;touch-action:manipulation}
 
 #hudToolsToggle{position:absolute;z-index:16;right:max(12px,env(safe-area-inset-right));top:max(12px,env(safe-area-inset-top));min-height:38px;padding:7px 12px;border:1px solid #ffffff66;border-radius:9px;background:#111d;color:#fff;font-weight:800;backdrop-filter:blur(8px);touch-action:manipulation}
 .hud-editor-panel.hud-tools-hidden .hud-editor-sizes,.hud-editor-panel.hud-tools-hidden .hud-item-settings,.hud-editor-panel.hud-tools-hidden .hud-editor-actions,.hud-editor-panel.hud-tools-hidden #hudEditorStatus{display:none!important}
+
+/* Shared sizing/coordinates: the editor canvas and the playing HUD use identical viewport mapping. */
+:root{--hud-live-button-size:38px;--hud-live-button-font:16px;--hud-live-stick-size:76px}
+.hud-edit-stick,.touch .stick{width:calc(var(--hud-live-stick-size) * var(--hud-stick-scale,1))!important;height:calc(var(--hud-live-stick-size) * var(--hud-stick-scale,1))!important}
+.hud-edit-face [data-hud-id],.touch .face [data-hud-id]{box-sizing:border-box!important;width:calc(var(--hud-live-button-size) * var(--hud-face-scale,1) * var(--item-scale,1))!important;height:calc(var(--hud-live-button-size) * var(--hud-face-scale,1) * var(--item-scale,1))!important;min-width:calc(var(--hud-live-button-size) * var(--hud-face-scale,1) * var(--item-scale,1))!important;min-height:calc(var(--hud-live-button-size) * var(--hud-face-scale,1) * var(--item-scale,1))!important;font-size:calc(var(--hud-live-button-font) * var(--hud-face-scale,1) * var(--item-scale,1))!important;opacity:var(--item-opacity,1)!important}
+.hud-edit-face [data-hud-id]{left:var(--item-x)!important;top:var(--item-y)!important}
+.touch .face [data-hud-id]{left:var(--item-x)!important;top:var(--item-y)!important}
+@media (orientation:landscape) and (max-height:600px) and (pointer:coarse){:root{--hud-live-button-size:32px;--hud-live-button-font:13px;--hud-live-stick-size:76px}}
+@media (orientation:landscape) and (max-height:430px) and (pointer:coarse){:root{--hud-live-button-size:27px;--hud-live-button-font:10px;--hud-live-stick-size:64px}}
 </style>
 <meta property="og:type" content="website"><meta property="og:title" content="Animation Versus — Arenas de duelo"><meta property="og:description" content="Animation Versus: duelo arcade de lutadores palito contra a CPU em dez arenas selecionáveis."><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Animation Versus — Arenas de duelo"><meta name="twitter:description" content="Animation Versus: duelo arcade de lutadores palito contra a CPU em dez arenas selecionáveis."><meta property="og:image" content="https://app.rogueon.ai/api/cartao/9314d81709e14a24"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:image" content="https://app.rogueon.ai/api/cartao/9314d81709e14a24"></head>
 <body>
