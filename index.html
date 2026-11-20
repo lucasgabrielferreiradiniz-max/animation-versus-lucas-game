@@ -563,7 +563,7 @@ if(btn)btn.addEventListener('click',async()=>{
  const ios=/iPhone|iPad|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
  alert(ios?'Para instalar, toque em Compartilhar e escolha “Adicionar à Tela de Início”.':'Abra o menu do navegador e escolha “Instalar app” ou “Adicionar à tela inicial”.');
 });
-if('serviceWorker' in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+if('serviceWorker' in navigator){let appRegistration=null;const checkAppUpdate=()=>{if(!navigator.onLine)return;const registration=appRegistration||navigator.serviceWorker.getRegistration('./');if(registration)Promise.resolve(registration).then(r=>r&&r.update()).catch(()=>{})};window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js',{updateViaCache:'none'}).then(r=>{appRegistration=r;checkAppUpdate();setInterval(checkAppUpdate,60000)}).catch(()=>{}));document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')checkAppUpdate()})}
 window.addEventListener('pageshow',refresh);refresh();
 })();
 </script>
