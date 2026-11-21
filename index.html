@@ -417,6 +417,11 @@ body:is([data-game-state="play"],[data-game-state="paused"],[data-game-state="en
 .lucx-special-actions button:disabled{opacity:.65}
 body[data-lucx-controls="true"][data-game-state="play"] .touch .face [data-key="jump"],body[data-lucx-controls="true"][data-game-state="paused"] .touch .face [data-key="jump"],body[data-lucx-controls="true"][data-game-state="play"] .touch .face [data-key="s"],body[data-lucx-controls="true"][data-game-state="paused"] .touch .face [data-key="s"]{display:none!important}
 @media(max-height:460px){.lucx-special-actions{gap:5px}.lucx-special-actions button{width:46px!important;height:46px!important;min-width:46px!important;min-height:46px!important;font-size:10px}}
+
+/* Skill-button color key: S orange, W purple. Applies to reserved and active HUD buttons, including Lucx's dedicated S action; no layout/position changes. */
+.touch .face [data-key="s"],.touch .face [data-key="s"].hud-skill-active,.hud-edit-face [data-hud-id="s"]{border-color:#ff941f!important;color:#fff0d5!important;background:radial-gradient(circle at 32% 24%,#ffad43,#b84d0b 68%,#702b08)!important;box-shadow:0 0 11px #ff851f88,inset 0 0 7px #ffd28d66!important;text-shadow:0 0 5px #ff9a35!important}
+.touch .face [data-key="w"],.touch .face [data-key="w"].hud-skill-active,.hud-edit-face [data-hud-id="w"]{border-color:#b268ff!important;color:#f1d9ff!important;background:radial-gradient(circle at 32% 24%,#9d55dc,#512185 68%,#2e1054)!important;box-shadow:0 0 11px #a445ff88,inset 0 0 7px #d2a0ff66!important;text-shadow:0 0 5px #bc73ff!important}
+.lucx-special-actions #lucxLightningButton{border-color:#ff941f!important;color:#fff0d5!important;background:linear-gradient(145deg,#c46a16,#67300a 68%,#261305)!important;box-shadow:0 0 11px #ff851f88,inset 0 0 7px #ffd28d66!important}
 </style>
 </head>
 <body>
