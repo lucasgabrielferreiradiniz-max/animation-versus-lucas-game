@@ -206,13 +206,13 @@ header{flex-wrap:wrap}#stage{max-width:100%;min-width:0;min-height:42px;backgrou
 @media (orientation:portrait) and (max-width:900px) and (pointer:coarse){body[data-game-state="play"] #rotateHint{position:fixed;inset:0;z-index:2147483646;display:grid;place-items:center;padding:24px;background:#060913f2;color:white;text-align:center;font-family:system-ui,sans-serif}.rotate-card{width:min(90vw,340px);padding:24px 18px;background:linear-gradient(155deg,#242e44,#101522);border:2px solid #dce2f0;border-radius:14px;box-shadow:0 0 0 3px #111522,0 12px 30px #000a}.rotate-icon{display:block;font-size:48px;line-height:1;margin-bottom:10px;color:#ffbd56;animation:rotate-hint 1.6s ease-in-out infinite}.rotate-card strong{display:block;font-size:21px}.rotate-card p{margin:8px 0 0;color:#d8deeb;font-size:15px}@keyframes rotate-hint{50%{transform:rotate(90deg)}}}
 @media (orientation:landscape) and (max-height:430px) and (pointer:coarse){.touch .stick{width:calc(64px * var(--hud-stick-scale,1));height:calc(64px * var(--hud-stick-scale,1))}.touch .face{width:calc(90px * var(--hud-face-scale,1));height:calc(90px * var(--hud-face-scale,1));grid-template-columns:repeat(3,calc(28px * var(--hud-face-scale,1)));grid-template-rows:repeat(3,calc(28px * var(--hud-face-scale,1)))}.touch .face button{width:calc(28px * var(--hud-face-scale,1));height:calc(28px * var(--hud-face-scale,1));min-width:calc(28px * var(--hud-face-scale,1));min-height:calc(28px * var(--hud-face-scale,1));font-size:calc(11px * var(--hud-face-scale,1))}header{min-height:25px}header button,#stage{min-height:23px;font-size:9px}.touch{height:68px}.touch .stick{width:64px;height:64px}.touch .face{width:90px;height:68px;grid-template-columns:repeat(3,28px);grid-template-rows:repeat(2,28px);gap:2px}.touch .face button{width:28px;height:28px;min-width:28px;min-height:28px}#summon{margin-bottom:18px}.side,.side:last-child{min-height:37px;padding-top:3px}.side .bar{height:6px}}
 
-/* PSP-inspired editable touch HUD. */
+/* Editable touch HUD. */
 #settingsPanel #editHudBtn{min-height:38px;padding:7px 13px;border:1px solid #c4d2e7;border-radius:7px;background:linear-gradient(180deg,#465878,#1b2537);color:#f6f8ff;font-weight:800;box-shadow:inset 0 1px #ffffff55,0 3px 7px #0008}
 #hudEditor[hidden]{display:none!important}#hudEditor{position:fixed;inset:0;z-index:2147483645;display:grid;place-items:center;padding:12px;background:#070a12f2;color:#edf2fb;font-family:system-ui,sans-serif}
 .hud-editor-panel{width:min(98vw,1100px);max-height:98dvh;overflow:auto;padding:clamp(12px,3vw,22px);border:2px solid #aebbd2;border-radius:14px;background:linear-gradient(150deg,#222e42,#101621);box-shadow:0 0 0 3px #090d14,0 18px 50px #000b}
 .hud-editor-panel h2{margin:0 0 5px;font-size:clamp(18px,4vw,25px);text-align:center}.hud-editor-help{text-align:center;margin:4px 0 12px;font-size:clamp(12px,2.6vw,15px);color:#c5cede}
 .hud-editor-stage{position:relative;width:100%;aspect-ratio:16/9;min-height:190px;max-height:min(68dvh,640px);margin:auto;overflow:hidden;border:2px solid #8899b3;border-radius:9px;background:radial-gradient(ellipse at center,#34445a 0,#202c3d 52%,#121a28 100%);box-shadow:inset 0 0 35px #0009;touch-action:none}
-.hud-editor-stage:before{content:"ANIMATION VERSUS · PSP HUD";position:absolute;left:50%;top:45%;transform:translate(-50%,-50%);color:#aab8cc55;font-size:clamp(10px,2vw,18px);font-weight:900;letter-spacing:.1em;white-space:nowrap}
+.hud-editor-stage:before{content:"ANIMATION VERSUS · HUD";position:absolute;left:50%;top:45%;transform:translate(-50%,-50%);color:#aab8cc55;font-size:clamp(10px,2vw,18px);font-weight:900;letter-spacing:.1em;white-space:nowrap}
 .hud-edit-stick,.hud-edit-face{position:absolute;touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none;filter:drop-shadow(0 5px 5px #0009)}
 .hud-edit-stick{width:calc(clamp(54px,13vw,96px) * var(--hud-stick-scale,1));aspect-ratio:1;border:2px solid #b7c3d5aa;border-radius:50%;background:radial-gradient(circle,#10151ddd 42%,#56647b 45%,#202b3d 55%,#111824 75%);display:grid;place-items:center;color:#d8e4f7}
 .hud-edit-stick:active,.hud-edit-face:active{cursor:grabbing}.hud-edit-stick span{width:40%;aspect-ratio:1;border-radius:50%;border:2px solid #bdcbe0;background:linear-gradient(145deg,#7788a3,#26364f);box-shadow:inset 0 2px 4px #fff5,0 3px 7px #0009}
@@ -411,7 +411,7 @@ body:is([data-game-state="play"],[data-game-state="paused"],[data-game-state="en
 <div class="splash-content"><div class="splash-logo splash-logo-text"><span>ANIMATION</span><strong>VERSUS FÃ</strong></div><p>Baixando recursos, aguarde<span class="loading-dots" aria-hidden="true"><i>.</i><i>.</i><i>.</i></span></p><div class="splash-progress" aria-hidden="true"><i></i></div></div>
 </div>
 <div id="hudEditor" hidden role="dialog" aria-modal="true" aria-labelledby="hudEditorTitle">
-<div class="hud-editor-panel"><h2 id="hudEditorTitle">Editar HUD · estilo PSP</h2><p class="hud-editor-help">Edite em tela cheia: arraste cada controle livremente por toda a tela e ajuste cada um separadamente.</p>
+<div class="hud-editor-panel"><h2 id="hudEditorTitle">Editar HUD</h2><p class="hud-editor-help">Edite em tela cheia: arraste cada controle livremente por toda a tela e ajuste cada um separadamente.</p>
 <button type="button" id="hudToolsToggle" aria-pressed="false">Ocultar ferramentas</button>
 <div class="hud-editor-stage" id="hudEditorStage" aria-label="Prévia da tela horizontal">
 <div class="hud-edit-stick" id="hudEditStick" role="button" tabindex="0" aria-label="Arraste para mover o analógico"><span></span><small>ANALÓGICO</small></div>
@@ -506,7 +506,7 @@ function setOnlineStatus(text){$('onlineStatus').textContent=text}
 function sendOnline(message){if(onlineState.conn&&onlineState.conn.open)try{onlineState.conn.send(message)}catch(e){setOnlineStatus('A conexão caiu. Tente criar ou entrar na sala novamente.')}}
 function readLocalInput(){const left=!!down('left'),right=!!down('right');return {left,right,axis:Math.max(-1,Math.min(1,stickAxis+Number(right)-Number(left))),jump:!!down('jump'),guard:!!down('guard'),hit:!!down('hit'),kick:!!down('kick'),s:!!down('s'),w:!!down('w'),orb:!!down('orb')}}
 function sendOnlineInput(dt){onlineState.inputClock+=dt;if(onlineState.inputClock<1/30)return;onlineState.inputClock=0;sendOnline({type:'input',input:readLocalInput()})}
-function serializeFighter(p){const o={};for(const k of ['x','y','v','hp','maxHp','energy','color','edge','f','cd','attack','used','guard','flash','walk','id','kick','move','airUsed','flying','anchor','boost','boostDir','shift','dive','glide','charge','counter','guardHeld','virus','ticks','ledge','pillar','potion','slow','stun','hits','melt','skillSHeld','skillWHeld','cdS','cdW','darkOrb','darkOrbCd','orbHeld'])if(p[k]!==undefined)o[k]=p[k];return o}
+function serializeFighter(p){const o={};for(const k of ['x','y','v','hp','maxHp','energy','color','edge','f','cd','attack','used','guard','flash','walk','id','kick','move','airUsed','flying','anchor','boost','boostDir','shift','dive','glide','charge','counter','guardHeld','virus','ticks','ledge','pillar','potion','slow','stun','hits','melt','skillSHeld','skillWHeld','cdS','cdW','darkOrb','darkOrbCd','orbHeld','specialAttack'])if(p[k]!==undefined)o[k]=p[k];return o}
 function applyOnlineSnapshot(){const s=onlineState.lastSnapshot;if(!s||s.type!=='snapshot')return;stage=s.stage;setStageGround();time=s.time;if(Array.isArray(s.roundsWon))roundsWon=s.roundsWon.slice(0,2);if(Number.isFinite(s.roundPause))roundPause=s.roundPause;if(Number.isFinite(s.roundWinner))roundWinner=s.roundWinner;for(const [target,src] of [[a,s.a],[b,s.b]])if(src)for(const k of Object.keys(src))target[k]=src[k];now=s.now||now;hud();if(s.ended&&state==='play'){mode('end',false);const guestWon=roundsWon[1]>=2;$('heading').textContent=guestWon?'Você venceu a partida!':'O anfitrião venceu a partida!';$('copy').textContent='Melhor de 3 rounds · placar final '+roundsWon[1]+'–'+roundsWon[0]+'.'}}
 function sendOnlineSnapshot(dt,force=false){onlineState.syncClock+=dt;if(!force&&onlineState.syncClock<1/30)return;onlineState.syncClock=0;sendOnline({type:'snapshot',stage,time,now,roundsWon,roundPause,roundWinner,a:serializeFighter(a),b:serializeFighter(b),ended:force})}
 function closeOnline(){const peer=onlineState.peer;onlineState={role:null,peer:null,conn:null,room:null,myFighter:selected,hostFighter:0,guestFighter:0,remoteFighterId:null,remoteInput:{},lastSnapshot:null,inputClock:0,syncClock:0};try{peer&&peer.destroy()}catch(e){}}
@@ -536,7 +536,7 @@ function launchPower(p,slot){
 if(p.guard||p.stun||p.attack>0)return false;
 const move=kits[p.id][slot].slice(),isS=slot===2,key=isS?'cdS':'cdW',cost=p.id===6?(isS?12:30):0;
 if((p[key]||0)>0||p.energy<cost)return false;
-p.energy-=cost;move[1]=Math.round(move[1]*1.12);move[2]=120;move[4]=Math.round(move[4]*1.12);
+p.energy-=cost;move[1]=Math.round(move[1]*1.12);move[2]=120;move[4]=Math.round(move[4]*1.12);p.specialAttack=true;
 p[key]=Math.max(isS?.85:1.05,(move[3]||.5)*1.4);p.move=move;p.kick=!isS;p.attack=p.id===9?(isS?.44:.56):.28;p.used=false;p.hits=0;
 const tag=move[6];
 if(tag==='draw'){if(p.y<floor-12){p.move[6]='saw';p.v=790;p.dive=.28}else{p.move[6]='flower';p.move[2]=Math.ceil(p.move[2]*1.15)}}
@@ -565,7 +565,7 @@ if(skillS||skillW){hit=false;kick=false}
 p.energy=Math.min(60,p.energy+dt*14);
 p.counter=Math.max(0,(p.counter||0)-dt);if(p.id===8&&p.guard&&!p.guardHeld)p.counter=.24;p.guardHeld=p.guard;
 const cost=p.id===6?(kick?30:12):(kick?12:0);
-if((hit||kick)&&!p.cd&&!p.guard&&p.energy>=cost){p.energy-=cost;p.kick=kick;p.move=kit[kick?3:2].slice();p.move[2]=120;p.cd=p.move[3];p.attack=p.id===9?(kick?.56:.44):.28;p.used=false;p.hits=0;
+if((hit||kick)&&!p.cd&&!p.guard&&p.energy>=cost){p.energy-=cost;p.kick=kick;p.move=kit[kick?3:2].slice();p.move[2]=60;p.specialAttack=false;p.cd=p.move[3];p.attack=p.id===9?(kick?.56:.44):.28;p.used=false;p.hits=0;
 const tag=p.move[6];
 if(tag==='mop'&&charged>=.5){p.move[1]+=42;p.move[2]+=9;p.move[4]+=23}
 if(tag==='fire'&&charged>=.5){p.move[6]='chicken';p.move[1]=174;p.move[2]=17}
@@ -576,10 +576,10 @@ if(tag==='potion'){p.potion=!p.potion;if(!p.potion)p.move[2]=16}
  const sTap=skillS&&!p.skillSHeld,wTap=skillW&&!p.skillWHeld;
  p.skillSHeld=!!skillS;p.skillWHeld=!!skillW;
  if(p.id===7){
-  if(sTap&&!p.cdS&&!p.guard&&!p.stun&&!p.attack){p.cdS=1.05;p.move=['Chuva de espinhos virais',260,120,1.05,13,90,'spikes'];p.attack=.24;p.used=false;p.hits=0;p.kick=true;unlock();sound(245)}
+  if(sTap&&!p.cdS&&!p.guard&&!p.stun&&!p.attack){p.cdS=1.05;p.move=['Chuva de espinhos virais',260,120,1.05,13,90,'spikes'];p.specialAttack=true;p.attack=.24;p.used=false;p.hits=0;p.kick=true;unlock();sound(245)}
   else if(wTap&&!p.cdW&&!p.guard&&!p.stun&&!p.attack){
    const enemy=p===a?b:a,dirTo=Math.sign(enemy.x-p.x)||p.f;
-   p.cdW=1.15;p.move=['Ataque surpresa de vírus',112,120,1.15,34,70,'ambush'];p.attack=.24;p.used=false;p.hits=0;p.kick=false;
+   p.cdW=1.15;p.move=['Ataque surpresa de vírus',112,120,1.15,34,70,'ambush'];p.specialAttack=true;p.attack=.24;p.used=false;p.hits=0;p.kick=false;
    p.x=Math.max(52,Math.min(908,enemy.x+dirTo*62));p.f=-dirTo;p.v=-105;p.melt=.32;p.shift=.24;unlock();sound(285)
   }
  }else if(sTap)launchPower(p,2);else if(wTap)launchPower(p,3);
@@ -609,9 +609,9 @@ if(p.darkOrb?.phase==='charge'){const orb=p.darkOrb;orb.elapsed+=dt;const rise=M
 }
 // A CPU causa metade do dano, arredondado para baixo para manter a vida inteira.
 function damageTaken(target,amount){return Math.max(0,Math.round(amount))}
-function counterHit(defender,attacker){if(!defender.guard||!defender.counter||attacker.hp<=0||Math.abs(defender.x-attacker.x)>175)return false;defender.counter=0;attacker.hp=Math.max(0,attacker.hp-damageTaken(attacker,120));attacker.flash=.16;attacker.x+=Math.sign(attacker.x-defender.x)*34;bursts.push({x:attacker.x,y:attacker.y-70,f:defender.f,l:.24,guard:true});sound(410);return true}
+function counterHit(defender,attacker){if(!defender.guard||!defender.counter||attacker.hp<=0||Math.abs(defender.x-attacker.x)>175)return false;defender.counter=0;attacker.hp=Math.max(0,attacker.hp-damageTaken(attacker,60));attacker.flash=.16;attacker.x+=Math.sign(attacker.x-defender.x)*34;bursts.push({x:attacker.x,y:attacker.y-70,f:defender.f,l:.24,guard:true});sound(410);return true}
 function strike(p,q){if(p.used||p.attack<=0||p.attack>.17)return;
-const [,range,,,push,height,status]=p.move||['',108,14,0,23,65];const damage=status==='darkorb'?130:120;
+const [,range,,,push,height,status]=p.move||['',108,14,0,23,65];const damage=status==='darkorb'?130:p.specialAttack?120:60;
 if(status==='anvil'){p.used=true;const x=Math.max(50,Math.min(910,p.x+p.f*Math.max(55,Math.min(145,(q.x-p.x)*p.f))));bolts.push({x,y:floor-220,f:p.f,left:1,owner:p,target:q,tag:status,damage,push,height,life:.81});sound(190);return}
 if(status==='spikes'){p.used=true;bolts.push({x:p.x+p.f*28,y:p.y-57,f:p.f,left:range,owner:p,target:q,tag:'liquid',damage,push,height,life:1.05});sound(310);return}
 if(['viral','fire','fireball','liquid','chicken','laptop','potion','flower','trap','flame','laser','gold','tool','network'].includes(status)){p.used=true;bolts.push({x:p.x+p.f*(status==='trap'?95:status==='flower'?84:27),y:status==='trap'?floor-27:status==='flower'?floor-37:p.y-60,f:p.f,left:range,owner:p,target:q,tag:status,damage,push,height,slow:status==='potion'&&p.potion,life:status==='trap'?3:.95});sound(245);return}
@@ -668,7 +668,7 @@ if(bot){const dx=b.x-bot.x;bot.f=Math.sign(dx)||bot.f;const travel=Math.min(Math
 // The ViraBot attacks repeatedly; reaching its target no longer removes it.
 bot.attackCooldown=Math.max(0,bot.attackCooldown-dt);if(Math.abs(b.x-bot.x)<34&&Math.abs(floor-b.y)<70&&bot.attackCooldown<=0){b.hp=Math.max(0,b.hp-(b.guard?2:10));b.flash=.16;bursts.push({x:bot.x,y:floor-24,f:bot.f,l:.24,guard:b.guard});sound(b.guard?330:170);bot.attackCooldown=.65}
 // CPU arm strikes can damage its 150-HP bar; only a depleted bar or a replacement ends it.
-bot.hitCooldown=Math.max(0,bot.hitCooldown-dt);if(b.attack>0&&b.attack<=.17&&bot.hitCooldown<=0){const [,range,damage,,push,height]=b.move||['',108,14,0,23,65];if(Math.abs(bot.x-b.x)<=range&&Math.abs(floor-b.y)<height&&Math.sign(bot.x-b.x)===b.f){bot.hp=Math.max(0,bot.hp-Math.max(1,Number(damage)||10));bot.hitCooldown=.32;bursts.push({x:bot.x,y:floor-105,f:-b.f,l:.24,guard:false});sound(170);if(bot.hp<=0)bot=null}}}
+bot.hitCooldown=Math.max(0,bot.hitCooldown-dt);if(b.attack>0&&b.attack<=.17&&bot.hitCooldown<=0){const [,range,damage,,push,height]=b.move||['',108,14,0,23,65];if(Math.abs(bot.x-b.x)<=range&&Math.abs(floor-b.y)<height&&Math.sign(bot.x-b.x)===b.f){bot.hp=Math.max(0,bot.hp-(b.specialAttack?120:60));bot.hitCooldown=.32;bursts.push({x:bot.x,y:floor-105,f:-b.f,l:.24,guard:false});sound(170);if(bot.hp<=0)bot=null}}}
 botHud();}
 for(const p of [a,b])p.x=Math.max(50,Math.min(910,p.x));
 hud();const roundEnded=!time||!a.hp||!b.hp;if(roundEnded)finishRound();if(onlineState.role==='host')sendOnlineSnapshot(dt,state==='end')
@@ -737,10 +737,10 @@ else if(phase<.39){limbs[2]=[[7,y],[-12,y+6],[-22,y-15]];limbs[3]=[[7,y],[20,y-8
 else if(phase<.72){limbs[2]=[[7,y],[19,y-8],[35+reach*.25,y-31]];limbs[3]=[[7,y],[0,y+10],[-24,y+1]]}
 else{limbs[2]=[[7,y],[-5,y-13],[20,y-31]];limbs[3]=[[7,y],[18,y-9],[38+reach*.25,y-21]]}
 }
-if(look===7&&p.darkOrb?.phase==='charge'){const orbProgress=Math.min(1,p.darkOrb.elapsed/p.darkOrb.duration),grip=(60+orbProgress*102)*.78;limbs[2]=[[7,y],[-grip*.48,-111],[-grip,-160]];limbs[3]=[[7,y],[grip*.48,-111],[grip,-160]];limbs[0]=[[0,-47],[-14,-24],[-20,-9]];limbs[1]=[[0,-47],[14,-24],[20,-9]]}
+if(look===7&&p.darkOrb?.phase==='charge'){const orbProgress=Math.min(1,p.darkOrb.elapsed/p.darkOrb.duration),orbRadius=60+orbProgress*102,orbX=190,orbY=-158,grip=orbRadius*.52,handY=orbY+orbRadius*.854;limbs[2]=[[7,y],[(orbX-grip)/2,(y+handY)/2],[orbX-grip,handY]];limbs[3]=[[7,y],[(orbX+grip)/2,(y+handY)/2],[orbX+grip,handY]];limbs[0]=[[0,-47],[-14,-24],[-20,-9]];limbs[1]=[[0,-47],[14,-24],[20,-9]]}
 else if(look===7&&p.darkOrb?.phase==='throw'){limbs[2]=[[7,y],[24,-102],[52,-91]];limbs[3]=[[7,y],[31,-96],[63,-82]]}
 for(const l of limbs)line(l,p.edge,15);for(const l of limbs)line(l,col,8);
-if(look===7&&p.darkOrb?.phase==='charge'){const progress=Math.min(1,p.darkOrb.elapsed/p.darkOrb.duration),radius=60+progress*102,pulse=1+Math.sin(now*18)*.08;g.save();g.globalAlpha=.58+progress*.4;g.shadowColor='#b532ff';g.shadowBlur=20;g.beginPath();g.arc(0,-160,radius*pulse,0,Math.PI*2);const orbGlow=g.createRadialGradient(-radius*.32,-160-radius*.35,2,0,-160,radius*pulse);orbGlow.addColorStop(0,'#f2c4ff');orbGlow.addColorStop(.18,'#8f42c7');orbGlow.addColorStop(.62,'#35114f');orbGlow.addColorStop(1,'#09040f');g.fillStyle=orbGlow;g.fill();g.lineWidth=2;g.strokeStyle='#df99ff';g.stroke();g.globalAlpha=.8;for(let i=0;i<5;i++){const ang=now*4+i*1.256,r=radius+7+Math.sin(now*8+i)*3;g.fillStyle=i%2?'#f3caff':'#a947ff';g.fillRect(Math.cos(ang)*r,-160+Math.sin(ang)*r,3,3)}g.restore()}
+if(look===7&&p.darkOrb?.phase==='charge'){const progress=Math.min(1,p.darkOrb.elapsed/p.darkOrb.duration),radius=60+progress*102,pulse=1+Math.sin(now*18)*.08,orbX=190,orbY=-158;g.save();g.globalAlpha=.58+progress*.4;g.shadowColor='#b532ff';g.shadowBlur=20;g.beginPath();g.arc(orbX,orbY,radius*pulse,0,Math.PI*2);const orbGlow=g.createRadialGradient(orbX-radius*.32,orbY-radius*.35,2,orbX,orbY,radius*pulse);orbGlow.addColorStop(0,'#f2c4ff');orbGlow.addColorStop(.18,'#8f42c7');orbGlow.addColorStop(.62,'#35114f');orbGlow.addColorStop(1,'#09040f');g.fillStyle=orbGlow;g.fill();g.lineWidth=2;g.strokeStyle='#df99ff';g.stroke();g.globalAlpha=.8;for(let i=0;i<5;i++){const ang=now*4+i*1.256,r=radius+7+Math.sin(now*8+i)*3;g.fillStyle=i%2?'#f3caff':'#a947ff';g.fillRect(orbX+Math.cos(ang)*r,orbY+Math.sin(ang)*r,3,3)}for(const arm of [limbs[2],limbs[3]]){line([arm[1],arm[2]],p.edge,15);line([arm[1],arm[2]],col,8);g.beginPath();g.arc(arm[2][0],arm[2][1],7,0,Math.PI*2);g.fillStyle='#ffccf5';g.fill();g.strokeStyle='#7510a0';g.lineWidth=2;g.stroke()}g.restore()}
 if(look===7&&p.darkOrb?.phase==='throw'){g.save();g.globalAlpha=Math.min(1,(.28-p.darkOrb.elapsed)/.12);line([[24,-103],[51,-94],[70,-82]],'#bc55ff',10);line([[29,-103],[55,-94],[70,-82]],'#f2d9ff',3);g.restore()}
 if(look===7&&p.flying){const pulse=.55+.45*Math.sin(now*22);for(const arm of [limbs[2],limbs[3]]){const [wx,wy]=arm[2];g.globalAlpha=.7;line([[wx,wy+2],[wx-2,wy+10+pulse*8],[wx+1,wy+18+pulse*11]],'#ff315f',5);line([[wx,wy+3],[wx-1,wy+9+pulse*5]],'#ffdce4',2);g.globalAlpha=1}}
 if(look===7&&p.melt>0){g.save();g.globalAlpha=Math.min(.85,p.melt*3);g.shadowColor='#ff214f';g.shadowBlur=12;for(let j=0;j<7;j++){const ang=now*11+j*2.399,rad=18+(j%3)*5,x=Math.cos(ang)*rad,y0=-47+Math.sin(ang)*rad;g.beginPath();g.arc(x,y0,3+(j%2),0,Math.PI*2);g.fillStyle=j%2?'#ff315f':'#49101f';g.fill()}g.restore()}
