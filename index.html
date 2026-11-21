@@ -608,7 +608,7 @@ const prevY=p.y;let nextY=Math.min(floor,p.y+p.v*dt);if(p.v>=0)for(const [l,r,y]
 if(p.darkOrb?.phase==='charge'){const orb=p.darkOrb;orb.elapsed+=dt;const rise=Math.min(1,orb.elapsed/.42);const target=orb.baseY-54*rise;p.y+=(target-p.y)*Math.min(1,dt*16);p.v=0;p.f=orb.face;p.flying=false;p.x=orb.baseX;if(orb.elapsed>=orb.duration){const targetFighter=p===a?b:a;bolts.push({x:p.x+p.f*34,y:p.y-98,f:p.f,left:900,owner:p,target:targetFighter,tag:'darkorb',damage:130,push:70,height:132,life:1.45});p.darkOrb={phase:'throw',elapsed:0};p.darkOrbCd=14;unlock();sound(125)}}
 }
 // A CPU causa metade do dano, arredondado para baixo para manter a vida inteira.
-function damageTaken(target,amount){return target===a?Math.floor(amount*cpuLevels[cpuLevel].damage):amount}
+function damageTaken(target,amount){return Math.max(0,Math.round(amount))}
 function counterHit(defender,attacker){if(!defender.guard||!defender.counter||attacker.hp<=0||Math.abs(defender.x-attacker.x)>175)return false;defender.counter=0;attacker.hp=Math.max(0,attacker.hp-damageTaken(attacker,120));attacker.flash=.16;attacker.x+=Math.sign(attacker.x-defender.x)*34;bursts.push({x:attacker.x,y:attacker.y-70,f:defender.f,l:.24,guard:true});sound(410);return true}
 function strike(p,q){if(p.used||p.attack<=0||p.attack>.17)return;
 const [,range,,,push,height,status]=p.move||['',108,14,0,23,65];const damage=status==='darkorb'?130:120;
