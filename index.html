@@ -403,16 +403,11 @@ body:is([data-game-state="play"],[data-game-state="paused"],[data-game-state="en
 /* The preview and the real analog are both anchored directly to the viewport's same center X/Y. */
 #hudEditStick,#stick{position:fixed!important;left:calc(var(--hud-stick-x,9) * 1vw)!important;top:calc(var(--hud-stick-y,85) * 1dvh)!important;right:auto!important;bottom:auto!important;transform:translate(-50%,-50%)!important}
 #roundScore{position:absolute;left:50%;top:42px;transform:translateX(-50%);z-index:8;padding:3px 9px;border:1px solid #74839c;border-radius:6px;background:#111a27e8;color:#fff;font:800 clamp(10px,1.2vw,14px)/1.2 system-ui,sans-serif;white-space:nowrap;text-shadow:0 1px #000}body:not([data-game-state="play"]) #roundScore{display:none}#matchPause{position:absolute;z-index:6;right:8px;top:52px;min-height:28px;padding:3px 9px;border:1px solid #ffd6ae;border-radius:6px;background:#1c2433ed;color:#fff;font:800 11px/1 system-ui,sans-serif;box-shadow:0 2px 7px #0008}#matchPause[hidden]{display:none}@media (orientation:landscape) and (max-height:600px) and (pointer:coarse){#matchPause{top:calc(1.4% + 49px);right:2%;min-height:26px;padding:2px 7px}}@media (max-width:520px) and (orientation:portrait){#matchPause{top:8px;right:8px}}#chooseStageFromPause{margin:4px 5px 0}
-/* Radical Mobile opening screen: 4 seconds, then a gentle fade. */
-#splash{background:radial-gradient(ellipse at 50% 28%,#40215b 0,transparent 58%),linear-gradient(#171020,#0b0910);transition:opacity 1.15s ease,visibility 0s linear 1.15s}
+/* Show the creator's exact full-screen opening artwork for four seconds, then fade it away. */
+#splash{background:#f89a2a url("./covers/radical-mobile-opening.jpg") center/cover no-repeat;transition:opacity 1.15s ease,visibility 0s linear 1.15s}
 #splash.splash-done{opacity:0;visibility:hidden;pointer-events:none}
-#splash .splash-bg{display:none}
-#splash:after{display:none}
-#splash .splash-content{width:auto;max-width:90vw;padding:0;background:transparent;border:0;border-radius:0;box-shadow:none}
-#splash .splash-logo{gap:14px;margin:0 auto;justify-items:center}
-#splash .splash-logo-image{width:clamp(170px,42vw,300px);height:clamp(170px,42vw,300px);object-fit:contain;margin:0 auto;border:0;box-shadow:none}
-#splash .splash-logo span{font-size:clamp(19px,4vw,28px);font-weight:900;font-style:normal;letter-spacing:.16em;color:#e4d7ff;text-shadow:0 2px 16px #9c69ff66}
-#splash .splash-content p,#splash .splash-progress{display:none}
+#splash .splash-bg,#splash:after{display:none}
+#splash .splash-screen-image{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center}
 </style>
 <meta property="og:type" content="website"><meta property="og:title" content="Animation Versus — Arenas de duelo"><meta property="og:description" content="Animation Versus: duelo arcade de lutadores palito contra a CPU em dez arenas selecionáveis."><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Animation Versus — Arenas de duelo"><meta name="twitter:description" content="Animation Versus: duelo arcade de lutadores palito contra a CPU em dez arenas selecionáveis."><meta property="og:image" content="https://app.rogueon.ai/api/cartao/9314d81709e14a24"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:image" content="https://app.rogueon.ai/api/cartao/9314d81709e14a24">
 <style>
@@ -437,9 +432,7 @@ body[data-lucx-controls="true"][data-game-state="play"] .touch .face [data-key="
 </head>
 <body>
 <audio id="battleTheme" src="./battle-theme-original.mp3" preload="auto" loop hidden aria-hidden="true"></audio>
-<div id="splash" role="img" aria-label="Abertura da Radical Mobile">
-<div class="splash-content"><div class="splash-logo"><img class="splash-logo-image" src="./brand/radical-mobile-mark.png" alt=""><span>RADICAL MOBILE</span></div></div>
-</div>
+<div id="splash" role="img" aria-label="Tela de abertura Radical Mobile"><img class="splash-screen-image" src="./covers/radical-mobile-opening.jpg" alt=""></div>
 <div id="hudEditor" hidden role="dialog" aria-modal="true" aria-labelledby="hudEditorTitle">
 <div class="hud-editor-panel"><h2 id="hudEditorTitle">Editar HUD</h2><p class="hud-editor-help">Edite em tela cheia: arraste cada controle livremente por toda a tela e ajuste cada um separadamente.</p>
 <button type="button" id="hudToolsToggle" aria-pressed="false">Ocultar ferramentas</button>
