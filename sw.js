@@ -1,4 +1,4 @@
-const CACHE = 'avf-installed-app-v2';
+const CACHE = 'avf-installed-app-v3';
 const APP_ASSETS = ['./', './index.html', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png'];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(APP_ASSETS)).then(() => self.skipWaiting()));
@@ -10,8 +10,8 @@ self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
   const url = new URL(event.request.url);
   if (url.origin !== self.location.origin) return;
-  // Prefer the latest published page/assets; use the installed cache only offline.
-  event.respondWith(fetch(event.request, {cache: 'no-store'}).then(response => {
+  // Always prefer current published game files, bypassing a stale HTTP cache; keep offline fallback.
+  event.respondWith(fetch(event.request, {cache: 'reload'}).then(response => {
     if (response.ok) {
       const copy = response.clone();
       caches.open(CACHE).then(cache => cache.put(event.request.mode === 'navigate' ? './index.html' : event.request, copy));
