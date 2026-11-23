@@ -34,7 +34,7 @@
   }catch(e){started=false;error.textContent='Não consegui carregar os recursos: '+String(e.message||e);error.hidden=false;retry.style.display='inline-block';}
  }
  retry.addEventListener('click',loadGame);
- setTimeout(()=>{splash.classList.add('is-gone');thanks.classList.add('is-open');setTimeout(()=>{thanks.classList.remove('is-open');load.classList.add('is-open');loadGame()},5000)},4000);
+ if(location.search.indexOf('native-splash=1')>=0){splash.classList.add('is-gone');thanks.classList.remove('is-open');load.classList.add('is-open');loadGame()}else{setTimeout(()=>{splash.classList.add('is-gone');thanks.classList.add('is-open');setTimeout(()=>{thanks.classList.remove('is-open');load.classList.add('is-open');loadGame()},5000)},4000)}
  paint();
 })();
 </script></body></html>
