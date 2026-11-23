@@ -890,6 +890,13 @@ g.save();g.shadowColor='#42eaff';g.shadowBlur=16;line([[sx-15,top+18],[sx-24,top
 /* Grip hand drawn on top, visibly wrapped around the staff. */
 g.beginPath();g.ellipse(34,-71,7,5,-.18,0,Math.PI*2);g.fillStyle=col;g.fill();g.strokeStyle=p.edge;g.lineWidth=2;g.stroke();g.restore();
 }
+/* Draw the fighter's head last so attacks and held items cannot erase it. */
+const headY=y-29,headR=17.5,hollowHead=[0,6,7,8,12].includes(look);
+g.beginPath();g.ellipse(0,headY,headR,headR*1.04,0,0,Math.PI*2);
+if(!hollowHead){g.fillStyle=col;g.fill()}
+g.strokeStyle=p.edge;g.lineWidth=5;g.lineJoin='round';g.stroke();
+g.strokeStyle=col;g.lineWidth=2.2;g.stroke();
+if(look===9){poly([[-13,headY-headR+1],[-16,headY-headR-8],[-7,headY-headR-4],[0,headY-headR-11],[7,headY-headR-4],[16,headY-headR-8],[13,headY-headR+1]],'#ffda5c');line([[-15,headY-headR],[15,headY-headR]],'#8a5b12',2)}
 // Restore the fighter-local transform so the next fighter is drawn at its own arena coordinates.
 g.restore();
 }
