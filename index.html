@@ -884,6 +884,8 @@ g.save();g.shadowColor='#42eaff';g.shadowBlur=16;line([[sx-15,top+18],[sx-24,top
 /* Grip hand drawn on top, visibly wrapped around the staff. */
 g.beginPath();g.ellipse(34,-71,7,5,-.18,0,Math.PI*2);g.fillStyle=col;g.fill();g.strokeStyle=p.edge;g.lineWidth=2;g.stroke();g.restore();
 }
+// Restore the fighter-local transform so the next fighter is drawn at its own arena coordinates.
+g.restore();
 }
 function drawViraBot(){
 if(!bot)return;
