@@ -935,12 +935,31 @@ g.save();g.shadowColor='#42eaff';g.shadowBlur=16;line([[sx-15,top+18],[sx-24,top
 /* Grip hand drawn on top, visibly wrapped around the staff. */
 g.beginPath();g.ellipse(34,-71,7,5,-.18,0,Math.PI*2);g.fillStyle=col;g.fill();g.strokeStyle=p.edge;g.lineWidth=2;g.stroke();g.restore();
 }
-/* The original head is a small round outline centered on the neck, matching the in-game portraits. */
-const headY=y-13,headR=13,hollowHead=[0,6,7,8,12].includes(look);
-g.beginPath();g.arc(0,headY,headR,0,Math.PI*2);
-if(!hollowHead){g.fillStyle=col;g.fill()}
-g.strokeStyle=hollowHead?col:p.edge;g.lineWidth=4.5;g.lineJoin='round';g.stroke();
-if(look===9){poly([[-10,headY-headR+1],[-12,headY-headR-7],[-5,headY-headR-3],[0,headY-headR-9],[5,headY-headR-3],[12,headY-headR-7],[10,headY-headR+1]],'#ffda5c');line([[-11,headY-headR],[11,headY-headR]],'#8a5b12',1.6)}
+/* Restore the distinct head silhouettes used by the pre-MV Animation Versus Fã project. */
+const h=y-25;
+const ring=[[-7,h-9],[0,h-16],[15,h-17],[24,h-9],[26,h+4],[18,h+15],[4,h+17],[-7,h+9],[-7,h-9]];
+if(activeLook(p)===11){
+ g.fillStyle=p.edge;g.beginPath();g.ellipse(9,h,27,16,0,0,Math.PI*2);g.fill();
+ g.fillStyle=col;g.beginPath();g.ellipse(9,h,22,11,0,0,Math.PI*2);g.fill();
+ g.fillStyle=p.edge;g.fillRect(5,h-5,8,10);
+}else if(p.id===9){
+ g.beginPath();g.arc(9,h,18,0,Math.PI*2);g.fillStyle=col;g.fill();g.strokeStyle=p.edge;g.lineWidth=5;g.stroke();
+}else if([0,6,7].includes(p.id)){
+ g.beginPath();g.ellipse(9,h,18,18,0,0,Math.PI*2);g.strokeStyle=p.edge;g.lineWidth=13;g.stroke();
+ g.strokeStyle=col;g.lineWidth=7;g.stroke();
+}else if([1,2,3,4,5].includes(p.id)){
+ g.beginPath();g.arc(9,h,18,0,Math.PI*2);g.fillStyle=col;g.fill();g.strokeStyle=p.edge;g.lineWidth=6;g.stroke();
+}else{
+ if(activeLook(p)>=1&&activeLook(p)<=5)poly(ring,col);
+ line(ring,p.edge,13);line(ring,col,7);
+}
+if(p.id===9){
+ const crown=[[-11,h-13],[-15,h-36],[-2,h-27],[9,h-43],[20,h-27],[33,h-36],[29,h-13]];
+ poly(crown,'#ffda5c');line([[-11,h-13],[-15,h-36],[-2,h-27],[9,h-43],[20,h-27],[33,h-36],[29,h-13]],'#8a5b12',3);
+}else if(activeLook(p)===9){
+ poly([[-10,h-14],[-15,h-36],[-1,h-29],[9,h-42],[19,h-29],[33,h-36],[28,h-14]],'#ffda5c');
+}
+if(p.guard&&look!==9)line([[27,y-30],[39,y-19],[44,y],[40,y+16],[29,y+28]],roster[p.id][3],4);
 // Restore the fighter-local transform so the next fighter is drawn at its own arena coordinates.
 g.restore();
 }
