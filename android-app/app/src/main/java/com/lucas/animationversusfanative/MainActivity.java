@@ -17,7 +17,6 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public final class MainActivity extends Activity {
@@ -72,69 +71,35 @@ public final class MainActivity extends Activity {
     private View makeNativeThanksScreen() {
         GradientDrawable background = new GradientDrawable(
             GradientDrawable.Orientation.TL_BR,
-            new int[] { 0xff435e87, 0xff1b2a42, 0xff080d17 });
+            new int[] { 0xffffd900, 0xffff8b12, 0xffea0050 });
         FrameLayout screen = new FrameLayout(this);
         screen.setBackground(background);
-
-        LinearLayout panel = new LinearLayout(this);
-        panel.setOrientation(LinearLayout.VERTICAL);
-        panel.setGravity(Gravity.CENTER);
-        panel.setPadding(dp(22), dp(14), dp(22), dp(18));
-        GradientDrawable panelBackground = new GradientDrawable(
-            GradientDrawable.Orientation.TL_BR,
-            new int[] { 0xff182438, 0xff090e18 });
-        panelBackground.setCornerRadius(dp(18));
-        panelBackground.setStroke(dp(2), 0xffcad8ec);
-        panel.setBackground(panelBackground);
-        panel.setElevation(dp(8));
 
         ImageView logo = new ImageView(this);
         logo.setImageResource(R.drawable.avf_original_logo);
         logo.setScaleType(ImageView.ScaleType.FIT_CENTER);
         logo.setAdjustViewBounds(true);
-        int maxLogoWidth = Math.min(dp(390), (int) (getResources().getDisplayMetrics().widthPixels * .64f));
-        int maxLogoHeight = Math.min(dp(290), (int) (getResources().getDisplayMetrics().heightPixels * .49f));
-        LinearLayout.LayoutParams imageParams = new LinearLayout.LayoutParams(maxLogoWidth, maxLogoHeight);
-        imageParams.bottomMargin = dp(5);
-        panel.addView(logo, imageParams);
-
-        TextView eyebrow = new TextView(this);
-        eyebrow.setText("UMA MENSAGEM ESPECIAL");
-        eyebrow.setTextColor(0xffd9e7ff);
-        eyebrow.setTextSize(TypedValue.COMPLEX_UNIT_SP, 13);
-        eyebrow.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
-        eyebrow.setLetterSpacing(.15f);
-        eyebrow.setGravity(Gravity.CENTER);
-        panel.addView(eyebrow, new LinearLayout.LayoutParams(
-            LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+        int maxLogoWidth = (int) (getResources().getDisplayMetrics().widthPixels * .62f);
+        int maxLogoHeight = (int) (getResources().getDisplayMetrics().heightPixels * .68f);
+        FrameLayout.LayoutParams logoParams = new FrameLayout.LayoutParams(
+            Math.min(dp(540), maxLogoWidth), Math.min(dp(500), maxLogoHeight), Gravity.CENTER);
+        screen.addView(logo, logoParams);
 
         TextView thanks = new TextView(this);
-        thanks.setText("OBRIGADO, ZAPIA!");
-        thanks.setTextColor(0xffffe29a);
-        thanks.setTextSize(TypedValue.COMPLEX_UNIT_SP, 31);
-        thanks.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
-        thanks.setGravity(Gravity.CENTER);
-        thanks.setShadowLayer(dp(5), 0, dp(2), 0xff754116);
-        LinearLayout.LayoutParams thanksParams = new LinearLayout.LayoutParams(
-            LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        thanksParams.topMargin = dp(5);
-        panel.addView(thanks, thanksParams);
-
-        TextView stars = new TextView(this);
-        stars.setText("✦   ✧   ✦");
-        stars.setTextColor(0xfffff1c4);
-        stars.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
-        stars.setGravity(Gravity.CENTER);
-        LinearLayout.LayoutParams starsParams = new LinearLayout.LayoutParams(
-            LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        starsParams.topMargin = dp(5);
-        panel.addView(stars, starsParams);
-
-        FrameLayout.LayoutParams panelParams = new FrameLayout.LayoutParams(
-            FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT, Gravity.CENTER);
-        panelParams.leftMargin = dp(10);
-        panelParams.rightMargin = dp(10);
-        screen.addView(panel, panelParams);
+        thanks.setText("AGRADECEMOS ZAPIA 🤩");
+        thanks.setTextColor(Color.BLACK);
+        thanks.setTextSize(TypedValue.COMPLEX_UNIT_SP, 24);
+        thanks.setTypeface(Typeface.create("casual", Typeface.BOLD));
+        thanks.setGravity(Gravity.CENTER_VERTICAL | Gravity.START);
+        thanks.setSingleLine(true);
+        thanks.setShadowLayer(dp(1), 0, dp(1), 0x66fff4c7);
+        FrameLayout.LayoutParams thanksParams = new FrameLayout.LayoutParams(
+            FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT,
+            Gravity.TOP | Gravity.START);
+        thanksParams.leftMargin = dp(16);
+        thanksParams.rightMargin = dp(8);
+        thanksParams.topMargin = dp(15);
+        screen.addView(thanks, thanksParams);
         return screen;
     }
 
