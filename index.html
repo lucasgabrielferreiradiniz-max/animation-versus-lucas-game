@@ -449,6 +449,12 @@ body[data-lucx-controls="true"][data-game-state="play"] .touch .face [data-key="
 .touch .face [data-key="w"],.touch .face [data-key="w"].hud-skill-active,.hud-edit-face [data-hud-id="w"]{border-color:#b268ff!important;color:#f1d9ff!important;background:radial-gradient(circle at 32% 24%,#9d55dc,#512185 68%,#2e1054)!important;box-shadow:0 0 11px #a445ff88,inset 0 0 7px #d2a0ff66!important;text-shadow:0 0 5px #bc73ff!important}
 .lucx-special-actions #lucxLightningButton{border-color:#ff941f!important;color:#fff0d5!important;background:linear-gradient(145deg,#c46a16,#67300a 68%,#261305)!important;box-shadow:0 0 11px #ff851f88,inset 0 0 7px #ffd28d66!important}
 </style>
+<style id="logo-clean-lettering-fix">
+/* Keep the user's backdrop, but hide its duplicate logo under the loading-card title. */
+.game-logo-content{background:#101827!important}
+/* Remove the pale outline that caused the stray white strokes on the V/E/R/F/A glyphs. */
+.game-logo-title strong{-webkit-text-stroke:0!important;text-shadow:3px 4px #863719,6px 8px #100b13!important}
+</style>
 </head>
 <body>
 <audio id="battleTheme" src="./battle-theme-original.mp3" preload="auto" loop hidden aria-hidden="true"></audio>
