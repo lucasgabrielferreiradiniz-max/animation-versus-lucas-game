@@ -11,7 +11,7 @@
 <section aria-live="polite" id="bootLoad"><div class="boot-panel"><h1 class="boot-logo"><span>ANIMATION</span><strong>VERSUS FÃ</strong></h1><p class="boot-message">Baixando recursos, aguarde<span aria-hidden="true" class="boot-dots"><i>.</i><i>.</i><i>.</i></span></p><div aria-label="Recursos iniciais carregados" aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" class="boot-track" role="progressbar"><i id="bootBar"></i></div><p id="bootStats">0,00 / 1,26 MB · 0,00 MB/s</p><p hidden="" id="bootError"></p><button id="bootRetry" type="button">Tentar novamente</button></div></section>
 <script>
 (()=>{
- const SIZES={splash:39350,game:1150300,peer:86948};
+ const SIZES={splash:39350,game:1150298,peer:86948};
  const TOTAL=SIZES.splash+SIZES.game+SIZES.peer;
  const splash=document.getElementById('bootSplash'), splashImg=document.getElementById('bootSplashImage'), load=document.getElementById('bootLoad'), bar=document.getElementById('bootBar'), track=document.querySelector('.boot-track'), stats=document.getElementById('bootStats'), error=document.getElementById('bootError'), retry=document.getElementById('bootRetry');
  let totalBytes=TOTAL,splashLoaded=0,coreLoaded=0,coreStarted=0,started=false,coverObjectUrl='';
