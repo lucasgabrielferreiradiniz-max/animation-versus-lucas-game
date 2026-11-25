@@ -631,7 +631,7 @@ function setStageGround(){floor=stage>=11?([400,410,408,464][stage-11]??400):424
 const cpuLevels=[{name:'Fácil',damage:.15,speed:.34,range:.41},{name:'Média',damage:.5,speed:.69,range:.89},{name:'Normal',damage:.8,speed:.95,range:1.1},{name:'Difícil',damage:1.5,speed:1.67,range:1.56},{name:'Impossível',damage:4,speed:3.5,range:2.5},{name:'Ultimate',damage:10,speed:5,range:4},{name:'Extreme',damage:15,speed:10,range:5},{name:'Supremo',damage:20,speed:15,range:7,professional:true}];let cpuLevel=2;
 let a,b,time,state='intro',back='intro',last,now=0,sparks=[],bursts=[],audio;let roundsWon=[0,0],roundPause=0,roundWinner=-1;let onlineState={role:null,peer:null,conn:null,room:null,myFighter:0,hostFighter:0,guestFighter:0,remoteFighterId:null,remoteInput:{},lastSnapshot:null,inputClock:0,syncClock:0};
 const fighter=(x,color,edge,f)=>({x,y:floor,v:0,hp:100,color,edge,f,cd:0,attack:0,used:false,guard:false,flash:0,walk:0});
-const roster=[['The Second Coming (Orange)','#ff6600','#542000','#ffad66'],['Red','#cc0000','#4a0000','#ff6666'],['Yellow','#ffcc00','#665200','#fff078'],['Green','#66cc00','#285200','#adff66'],['Blue','#33ccff','#004e68','#a5efff'],['Purple','#9148ce','#3f1b60','#cc9eff'],['The Chosen One','#191b24','#05060a','#a9b3ca'],['The Dark Lord','#ff0000','#4a0000','#ff7777'],['Victim','#868a97','#343743','#c9ccd5'],['King Orange','#ea641b','#60270d','#ffb270'],['Conductor','#e25bac','#5e204c','#ffa9de'],['Node','#eeeefa','#3d415b','#f4f4ff'],['Lucx','#ffd21f','#684800','#f4fff8']];
+const roster=[['The Second Coming (Orange)','#ff6600','#542000','#ffad66'],['Red','#cc0000','#4a0000','#ff6666'],['Yellow','#FEC503','#665200','#fff078'],['Green','#66cc00','#285200','#adff66'],['Blue','#33ccff','#004e68','#a5efff'],['Purple','#9148ce','#3f1b60','#cc9eff'],['The Chosen One','#191b24','#05060a','#a9b3ca'],['The Dark Lord','#FF0000','#4a0000','#ff7777'],['Victim','#000000','#343743','#c9ccd5'],['King Orange','#CC6600','#60270d','#ffb270'],['Conductor','#e25bac','#5e204c','#ffa9de'],['Node','#eeeefa','#3d415b','#f4f4ff'],['Lucx','#ffd21f','#684800','#f4fff8']];
 // Adaptações para esta arena; não são comandos oficiais.
 // A: nome, impulso, avanço; B: nome, dano bloqueado que passa; X/Y: nome, alcance, dano, recarga, impulso no alvo, tolerância vertical.
 const kits=[[['Salto',675,36],['Guarda',2],['Esfregão carregável',124,12,.44,24,65,'mop'],['Flor desenhada / mergulho de motosserra',175,19,.88,47,76,'draw']],[['Salto ofensivo',660,52],['Guarda',3],['Soco do lobo',123,16,.39,37,67,'wolf'],['Bola de fogo / galinha carregada',140,11,.78,22,34,'fire']],[['Salto / teletransporte aéreo',635,18],['Janela pop-up',0],['Disparo do laptop',285,10,.46,21,32,'laptop'],['Pop-up ofensivo',246,16,.91,25,88,'popup']],[['Salto / gancho aéreo',670,24],['Guarda com vara',2],['Corte de vara',156,13,.39,25,72,'rod'],['Puxão de pesca',240,15,.84,-54,95,'hook']],[['Salto / teletransporte curto',665,20],['Guarda',2],['Combo de três golpes',116,5,.49,10,74,'combo'],['Poções alternadas',241,12,.68,24,38,'potion']],[['Salto duplo / planar',685,26],['Asas fechadas',3],['Rasante',133,12,.37,28,95],['Agarrão aéreo',132,20,.81,46,105,'grab']],[['Voo de fogo',755,57],['Manto de fogo',2],['Rajada de fogo',215,19,.54,30,48,'flame'],['Visão laser',355,27,1.24,43,38,'laser']],[['Voo viral',720,105],['Guarda blindada Vira',1],['Combo de Vira-Blades',150,1200,.36,27,68,'combo'],['Bola de fogo viral',350,1200,.72,34,56,'fireball']],[['Salto de edição',645,46],['Guarda de contra-ataque',0],['Traço de pincel',148,11,.40,22,64],['Armadilha de contenção',200,15,1.35,12,48,'trap']],[['Pilar de terra e grama',695,12],['Muralha de obsidiana',0],['Bigorna cadente',163,23,.89,53,38,'anvil'],['Feixe do bloco dourado',375,31,1.65,71,43,'gold']],[['Salto de exploração',665,33],['Proteção da bolsa',2],['Golpe de ferramenta',116,10,.30,21,68],['Ferramenta arremessada',214,16,.86,42,38,'tool']],[['Salto de pixel',725,64],['Campo de nós',1],['Pulso de nó',159,11,.48,24,72],['Pulso da rede',265,16,1.03,49,42,'network']],[['Kamehameha eletrônico · 1.000.000 Volts',960,1500,3,70,130,'lucxbeam'],['Escudo de 100000 Volts',2],['Voo eletrônico',360,1500,.7,42,80,'flight'],['Golpe de cajado elétrico · 1500 de dano',125,1500,.42,34,82,'lucxstaff'],['Raio elétrico · 10 raios (1500 dano total)',920,1500,1.1,34,140,'lucxstorm'],['Teleporte elétrico',155,1500,1.15,38,90,'lucxteleport']]];
@@ -967,7 +967,7 @@ if(p.pillar&&p.pillar.until>now){const n=Math.max(1,Math.min(3,Math.ceil((p.pill
 g.fillStyle='#17141b60';g.beginPath();g.ellipse(p.x,floor+4,Math.max(2,32-(floor-p.y)*.1),5,0,0,Math.PI*2);g.fill();
 g.save();g.translate(Math.round(p.x/2)*2,Math.round(p.y/2)*2);g.scale(p.f,1);
 const air=p.y<floor-2,step=Math.sin(p.walk)*20,idle=reduced?0:Math.round(Math.sin(now*4)*2),reach=p.attack?Math.sin(Math.PI*(1-p.attack/(p.id===9?(p.kick?.56:.44):.28)))*60:0,y=-76+idle;
-const col=p.flash?'#fff6bf':p.color,look=activeLook(p),tag=p.move?.[6];
+const col=p.flash?'#fff6bf':p.color,look=activeLook(p),tag=p.move?.[6],fistAttack=p.attack>0&&!p.specialAttack&&!tag&&![3,7,9,10,12].includes(look);
 if(look===6&&air&&(p.jumpHeld||p.shift)){poly([[-5,-16],[-23,-9],[-34,22],[-10,11],[0,27],[14,-11]],'#f37b32');poly([[-5,-11],[-20,14],[-3,7],[2,18],[10,-9]],'#ffda63')}
 if(look===8&&p.counter)line([[21,y-24],[39,y-24],[39,y+21],[21,y+21]],'#f5e6ff',4);
 if(look===9&&p.guard)for(let j=0;j<3;j++)block(31,-30-j*26,26,['#252039','#735891','#160f25']);
@@ -981,8 +981,7 @@ if(p.shift&&look===7){g.save();g.globalAlpha=.62;g.shadowColor='#ff315f';g.shado
 if(p.charge){g.fillStyle='#ffdc83';g.fillRect(-23,-139,46*Math.min(1,p.charge/.6),5)}
 if(look===2&&(p.guard||tag==='popup'&&p.attack)){const x=p.guard?22:44;g.fillStyle='#212c4a';g.fillRect(x,y-26,p.guard?43:145,43);g.fillStyle='#ffe465';g.fillRect(x,y-26,p.guard?43:145,7)}
 if(p.move&&![6,7,9].includes(p.id)&&!['hook','rod','popup','mop','flower','saw','fire','chicken','laptop','potion','grab'].includes(tag)&&p.attack>0&&p.attack<=.19&&p.move[1]>135){const end=p.move[1]-8,fade=p.attack/.19,ink=roster[p.id][3],level=-69;g.save();g.globalAlpha=Math.min(1,fade*1.6);if(p.move[6]){for(let j=24;j<end;j+=18){g.fillStyle=ink;g.fillRect(j,level+Math.sin(j)*11,7,7)}}else{line([[24,level],[end*.62,level-8],[end,level]],ink,8);line([[26,level],[end*.62,level-8],[end,level]],'#fff8d9',3)}g.restore()}
-if(reach>20){const ink=roster[p.id][3],s=0;g.save();g.globalAlpha=.75;poly([[22,y+19+s],[48,y-15+s],[62+reach,y-31+s],[86+reach,y-28+s],[58+reach,y-20+s],[40,y+7+s]],ink);line([[43,y+4+s],[64,y-13+s],[73+reach,y-29+s]],'#fff2be',3);g.restore()}
-if(reach>24)poly([[18,y+25],[48,y+8],[48+reach,y-12],[33+reach,y+8],[43,y+26]],p===a?'#d8edffb0':'#ff9b39b0');
+/* Removed the generic blade-shaped slash from ordinary attacks; weapon moves keep their own effects. */
 const limbs=[[[0,-47],[-15-step*.5,-25],[-23-step,air?-13:0]],[[0,-47],[17+step*.5,air?-40:-23],[23+step,air?-20:0]],[[7,y],[-17,y+22],[2,y+11]],[[7,y],[p.guard?23:21+reach*.45,y+(p.guard?10:16-reach*.15)],[p.guard?26:31+reach,y+(p.guard?-13:7-reach*.1)]],[[0,-47],[7,y],[9,y-12]]];
 if(p.kick&&reach>0&&!(p.id===7)){limbs[2]=[[7,y],[-4,y-7],[-13,y-20]];limbs[3]=[[7,y],[27+reach*.38,y-7],[42+reach,y-22]]}
 if(look===7&&p.flying){limbs[0]=[[0,-47],[-13,-37],[-18,-20]];limbs[1]=[[0,-47],[15,-38],[21,-22]];limbs[2]=[[7,y],[-8,y-13],[-19,y-24]];limbs[3]=[[7,y],[15,y-13],[27,y-24]]}
@@ -997,9 +996,12 @@ else if(phase<.39){limbs[2]=[[7,y],[-12,y+6],[-22,y-15]];limbs[3]=[[7,y],[20,y-8
 else if(phase<.72){limbs[2]=[[7,y],[19,y-8],[35+reach*.25,y-31]];limbs[3]=[[7,y],[0,y+10],[-24,y+1]]}
 else{limbs[2]=[[7,y],[-5,y-13],[20,y-31]];limbs[3]=[[7,y],[18,y-9],[38+reach*.25,y-21]]}
 }
+if(fistAttack){limbs[3]=[[7,y],[25+reach*.28,y+1],[35+reach*.6,y-5]];}
 if(look===7&&p.darkOrb?.phase==='charge'){const grip=162*Math.sin(.18),handY=-128-162*(1-Math.cos(.18));limbs[2]=[[7,y],[-5,-103],[-grip,handY]];limbs[3]=[[7,y],[19,-103],[grip,handY]];limbs[0]=[[0,-47],[-14,-24],[-20,-9]];limbs[1]=[[0,-47],[14,-24],[20,-9]]}
 else if(look===7&&p.darkOrb?.phase==='throw'){limbs[2]=[[7,y],[24,-102],[52,-91]];limbs[3]=[[7,y],[31,-96],[63,-82]]}
 for(const l of limbs)line(l,p.edge,15);for(const l of limbs)line(l,col,8);
+/* A clear closed fist on an ordinary, unarmed punch; weapon/special attacks retain their custom animation. */
+if(fistAttack){const [wx,wy]=limbs[3][2],fx=wx+4,fy=wy;g.save();g.beginPath();g.ellipse(fx,fy,8,6,0,0,Math.PI*2);g.fillStyle=col;g.fill();g.strokeStyle=p.edge;g.lineWidth=2.4;g.stroke();line([[fx-2,fy-2],[fx+1,fy-3]],'#ffffffbb',1.3);line([[fx-1,fy+1],[fx-1,fy+4]],p.edge,1.2);line([[fx+2,fy],[fx+2,fy+4]],p.edge,1.2);g.restore()}
 if(look===12&&p.lucxBeam){const progress=Math.min(1,p.lucxBeam.elapsed/3),radius=8+22*progress,pulse=1+Math.sin(now*20)*.05;g.save();g.globalAlpha=.6+progress*.4;g.shadowColor='#42eaff';g.shadowBlur=20;g.beginPath();g.arc(48,-93,radius*pulse,0,Math.PI*2);const glow=g.createRadialGradient(43,-98,1,48,-93,radius*pulse);glow.addColorStop(0,'#fff');glow.addColorStop(.35,'#b2ffff');glow.addColorStop(1,'#37cfff');g.fillStyle=glow;g.fill();g.strokeStyle='#fff57a';g.lineWidth=3;g.stroke();for(let j=0;j<4;j++){const ang=now*9+j*Math.PI/2;line([[48+Math.cos(ang)*(radius+5),-93+Math.sin(ang)*(radius+5)],[48+Math.cos(ang)*(radius+12),-93+Math.sin(ang)*(radius+12)]],j%2?'#fff36a':'#41efff',2)}g.fillStyle='#152a38';g.fillRect(-22,-146,48,5);g.fillStyle='#50f2ff';g.fillRect(-22,-146,48*progress,5);g.restore()}
 
 if(look===7&&p.darkOrb?.phase==='charge'){const progress=Math.min(1,p.darkOrb.elapsed/p.darkOrb.duration),radius=162,pulse=1+Math.sin(now*18)*.035,orbX=0,orbY=-128-radius;g.save();g.globalAlpha=.58+progress*.4;g.shadowColor='#b532ff';g.shadowBlur=20;g.beginPath();g.arc(orbX,orbY,radius*pulse,0,Math.PI*2);const orbGlow=g.createRadialGradient(orbX-radius*.32,orbY-radius*.35,2,orbX,orbY,radius*pulse);orbGlow.addColorStop(0,'#f2c4ff');orbGlow.addColorStop(.18,'#8f42c7');orbGlow.addColorStop(.62,'#35114f');orbGlow.addColorStop(1,'#09040f');g.fillStyle=orbGlow;g.fill();g.lineWidth=2;g.strokeStyle='#df99ff';g.stroke();g.globalAlpha=.8;for(let i=0;i<5;i++){const ang=now*4+i*1.256,r=radius+7+Math.sin(now*8+i)*3;g.fillStyle=i%2?'#f3caff':'#a947ff';g.fillRect(orbX+Math.cos(ang)*r,orbY+Math.sin(ang)*r,3,3)}for(const [idx,arm] of [limbs[2],limbs[3]].entries()){g.beginPath();g.arc(arm[2][0],arm[2][1],5,0,Math.PI*2);g.fillStyle='#ffccf5';g.fill();g.strokeStyle='#7510a0';g.lineWidth=1.5;g.stroke();const side=idx===0?-1:1;line([[arm[2][0],arm[2][1]],[arm[2][0]+side*3,arm[2][1]-3]],'#ffccf5',2)}g.restore()}
@@ -1007,19 +1009,19 @@ if(look===7&&p.darkOrb?.phase==='throw'){g.save();g.globalAlpha=Math.min(1,(.28-
 if(look===7&&p.flying){const pulse=.55+.45*Math.sin(now*22);for(const arm of [limbs[2],limbs[3]]){const [wx,wy]=arm[2];g.globalAlpha=.7;line([[wx,wy+2],[wx-2,wy+10+pulse*8],[wx+1,wy+18+pulse*11]],'#ff315f',5);line([[wx,wy+3],[wx-1,wy+9+pulse*5]],'#ffdce4',2);g.globalAlpha=1}}
 if(look===7&&p.melt>0){g.save();g.globalAlpha=Math.min(.85,p.melt*3);g.shadowColor='#ff214f';g.shadowBlur=12;for(let j=0;j<7;j++){const ang=now*11+j*2.399,rad=18+(j%3)*5,x=Math.cos(ang)*rad,y0=-47+Math.sin(ang)*rad;g.beginPath();g.arc(x,y0,3+(j%2),0,Math.PI*2);g.fillStyle=j%2?'#ff315f':'#49101f';g.fill()}g.restore()}
 
-if(activeLook(p)===7&&p.darkOrb?.phase!=='charge'){
+if(activeLook(p)===7&&p.darkOrb?.phase!=='charge'&&!fistAttack){
 /* Vira-Blades vanish while the sphere is being held, and return after launch. */
 const viraBlade=(arm,pulse=0,trail=false)=>{
 const elbow=arm[1],wrist=arm[2],vx=wrist[0]-elbow[0],vy=wrist[1]-elbow[1],n=Math.hypot(vx,vy)||1,ux=vx/n,uy=vy/n,nx=-uy,ny=ux;
 const bx=wrist[0]+ux*2,by=wrist[1]+uy*2,len=45+Math.min(12,reach*.12),tip=[bx+ux*len,by+uy*len],base=[bx+ux*8,by+uy*8],mid=[bx+ux*len*.62,by+uy*len*.62],w=7+pulse*1.3;
-g.save();g.shadowColor='#ff244f';g.shadowBlur=10;
+g.save();g.shadowColor='#FFCC00';g.shadowBlur=10;
 /* Slim ViraBand cuff sits around the wrist, with energy starting at its edge. */
-g.beginPath();g.ellipse(wrist[0],wrist[1],7,4,Math.atan2(uy,ux),0,Math.PI*2);g.fillStyle='#39101d';g.fill();g.strokeStyle='#ff4e73';g.lineWidth=2;g.stroke();
+g.beginPath();g.ellipse(wrist[0],wrist[1],7,4,Math.atan2(uy,ux),0,Math.PI*2);g.fillStyle='#4a0000';g.fill();g.strokeStyle='#FFCC00';g.lineWidth=2;g.stroke();
 /* Tapered red virus-energy blade, continuous from the cuff and along the forearm. */
-poly([[bx+nx*2,by+ny*2],[base[0]+nx*w,base[1]+ny*w],[mid[0]+nx*w*.66,mid[1]+ny*w*.66],tip,[mid[0]-nx*w*.66,mid[1]-ny*w*.66],[base[0]-nx*w,base[1]-ny*w]],'#521027');
-poly([[bx+nx,by+ny],[base[0]+nx*w*.54,base[1]+ny*w*.54],[mid[0]+nx*w*.32,mid[1]+ny*w*.32],tip,[mid[0]-nx*w*.32,mid[1]-ny*w*.32],[base[0]-nx*w*.54,base[1]-ny*w*.54]],'#ff315f');
-line([[bx+nx*.4,by+ny*.4],[mid[0]+nx,mid[1]+ny],tip],'#ffe8ed',2.5);
-if(trail&&!reduced){g.globalAlpha=.38;line([[bx-ux*7-nx*3,by-uy*7-ny*3],[bx+ux*len*.55-nx*2,by+uy*len*.55-ny*2],[tip[0]-ux*12,tip[1]-uy*12]],'#ff416e',5);g.globalAlpha=.7;line([[bx-ux*4,by-uy*4],[tip[0]-ux*10,tip[1]-uy*10]],'#ffc3d2',2)}
+poly([[bx+nx*2,by+ny*2],[base[0]+nx*w,base[1]+ny*w],[mid[0]+nx*w*.66,mid[1]+ny*w*.66],tip,[mid[0]-nx*w*.66,mid[1]-ny*w*.66],[base[0]-nx*w,base[1]-ny*w]],'#8A5B00');
+poly([[bx+nx,by+ny],[base[0]+nx*w*.54,base[1]+ny*w*.54],[mid[0]+nx*w*.32,mid[1]+ny*w*.32],tip,[mid[0]-nx*w*.32,mid[1]-ny*w*.32],[base[0]-nx*w*.54,base[1]-ny*w*.54]],'#FFCC00');
+line([[bx+nx*.4,by+ny*.4],[mid[0]+nx,mid[1]+ny],tip],'#FFF1A8',2.5);
+if(trail&&!reduced){g.globalAlpha=.38;line([[bx-ux*7-nx*3,by-uy*7-ny*3],[bx+ux*len*.55-nx*2,by+uy*len*.55-ny*2],[tip[0]-ux*12,tip[1]-uy*12]],'#FFCC00',5);g.globalAlpha=.7;line([[bx-ux*4,by-uy*4],[tip[0]-ux*10,tip[1]-uy*10]],'#FFF1A8',2)}
 g.restore()
 };
 const pulse=.5+.5*Math.sin(now*18),slash=tag==='combo'&&p.attack>0&&p.attack<.18;
@@ -1028,13 +1030,13 @@ viraBlade(limbs[2],pulse,slash&&((p.hits||0)===2));
 viraBlade(limbs[3],pulse,slash&&((p.hits||0)!==2));
 }
 if(p.virus){g.fillStyle='#ff70b8';for(let j=0;j<6;j++)g.fillRect((j*17)%49-24,-22-(j*13)%77,5,5)}
-if(look===0&&p.attack){if(tag==='mop'){line([[28,y+8],[48+reach,y-20]],'#a05c36',7);line([[42+reach,y-26],[54+reach,y-14]],'#fcf2c9',10)}else if(tag==='saw'){line([[24,y+13],[54,y+57]],'#2b2430',17);line([[24,y+13],[54,y+57]],'#dfe2ee',9);for(let j=0;j<5;j++)g.fillRect(29+j*6,y+14+j*8,7,5)}else{line([[29,y+7],[52,y-19]],'#ffdc59',8);poly([[52,y-19],[57,y-26],[55,y-15]],'#322336')}}
+if(look===0&&p.attack&&!fistAttack){if(tag==='mop'){line([[28,y+8],[48+reach,y-20]],'#a05c36',7);line([[42+reach,y-26],[54+reach,y-14]],'#fcf2c9',10)}else if(tag==='saw'){line([[24,y+13],[54,y+57]],'#2b2430',17);line([[24,y+13],[54,y+57]],'#dfe2ee',9);for(let j=0;j<5;j++)g.fillRect(29+j*6,y+14+j*8,7,5)}else{line([[29,y+7],[52,y-19]],'#ffdc59',8);poly([[52,y-19],[57,y-26],[55,y-15]],'#322336')}}
 if(look===1&&tag==='wolf'&&p.attack>.06)poly([[34,y+18],[52,y-15],[60,y-1],[73,y-16],[85,y+3],[119,y+14],[96,y+35],[64,y+39]],'#ffb5a7ae');
 if(look===2&&p.attack&&tag==='laptop'){g.fillStyle='#32394d';g.fillRect(15,y-18,32,23);g.fillStyle='#fff188';g.fillRect(19,y-15,24,14);line([[11,y+6],[50,y+6]],'#b6c8dd',5)}
-if(look===3){line([[25,y+9],[52+reach,y-16]],'#573c28',6);if(p.shift||tag==='hook'&&p.attack){const end=p.shift?108:170,level=p.shift?-170:y+5;line([[52+reach,y-16],[end,level],[end+14,level+5]],'#e0fff3',3)}}
+if(look===3&&!fistAttack){line([[25,y+9],[52+reach,y-16]],'#573c28',6);if(p.shift||tag==='hook'&&p.attack){const end=p.shift?108:170,level=p.shift?-170:y+5;line([[52+reach,y-16],[end,level],[end+14,level+5]],'#e0fff3',3)}}
 if(look===12){
 /* Lucx holds a long electric staff; the glowing head, grip and swing follow his hand. */
-const sx=39,top=-145,bottom=24,swinging=tag==='lucxstaff'&&p.attack>0,phase=swinging?Math.max(0,Math.min(1,1-p.attack/.28)):0,swingAngle=swinging?(phase<.4?.82-(phase/.4)*1.64:-.82+(phase-.4)*.62):0;
+const sx=39,top=-145,bottom=24,swinging=tag==='lucxstaff'&&p.attack>0&&!fistAttack,phase=swinging?Math.max(0,Math.min(1,1-p.attack/.28)):0,swingAngle=swinging?(phase<.4?.82-(phase/.4)*1.64:-.82+(phase-.4)*.62):0;
 g.save();if(swinging){g.translate(34,-71);g.rotate(swingAngle);g.translate(-34,71)}
 /* Long straight shaft with an unmistakable staff silhouette; no axe blades. */
 line([[sx-15,top+10],[sx+14,bottom]],'#171a24',15);
@@ -1069,7 +1071,7 @@ if(activeLook(p)===11){
 }
 if(p.id===9){
  const crown=[[-11,h-13],[-15,h-36],[-2,h-27],[9,h-43],[20,h-27],[33,h-36],[29,h-13]];
- poly(crown,'#ffda5c');line([[-11,h-13],[-15,h-36],[-2,h-27],[9,h-43],[20,h-27],[33,h-36],[29,h-13]],'#8a5b12',3);
+ poly(crown,'#E7B000');line([[-11,h-13],[-15,h-36],[-2,h-27],[9,h-43],[20,h-27],[33,h-36],[29,h-13]],'#8a5b12',3);
 }else if(activeLook(p)===9){
  poly([[-10,h-14],[-15,h-36],[-1,h-29],[9,h-42],[19,h-29],[33,h-36],[28,h-14]],'#ffda5c');
 }
